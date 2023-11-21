@@ -1,0 +1,14 @@
+button {
+  width: 20%;
+  height: 2rem;
+  cursor: pointer;
+  font-family: 'Gloria Hallelujah', cursive;
+  transition: transform 0.3s ease, background-color 0.3s ease, font-size 0.3s ease;
+  border: none;
+  &:hover {
+    transform: scale(1.1);
+    background-color: $hover-button-background-color;
+    font-size: $input-font-size;
+    color: $hover-button-text-color;
+  }
+}

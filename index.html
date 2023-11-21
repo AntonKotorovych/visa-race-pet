@@ -3,13 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Oxanium:wght@200;400;700&family=Permanent+Marker&display=swap"
+      rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Visa Race!</title>
   </head>
   <body>
-    <div>
-      <h1>Hello World!</h1>
+    <div class="container">
+      <h1 class="title">Visa Race!</h1>
     </div>
+    <form class="main-form">
+      <div class="main-form__input">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" type="text" placeholder="Enter full name..." />
+        <button>Generate</button>
+      </div>
+      <div class="main-form__input">
+        <label for="balance">Balance</label>
+        <input id="balance" type="text" placeholder="Enter balance..." />
+        <button>Generate</button>
+      </div>
+      <div class="main-form__input">
+        <label for="age">Age</label>
+        <input id="age" type="number" placeholder="Enter age..." />
+        <button>Generate</button>
+      </div>
+      <label for="documents">Documents</label>
+      <select id="documents" class="form-select form-select-lg mb-3" aria-label="Large select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </form>
     <script type="module" src="/js/main.js"></script>
   </body>
 </html>
