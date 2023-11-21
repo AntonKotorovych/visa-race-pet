@@ -12,9 +12,11 @@
     <title>Visa Race!</title>
   </head>
   <body>
-    <h1 class="title">Visa Race!</h1>
-    <form class="main-form">
-      <div class="inputs-container">
+    <section>
+      <h1 class="title">Visa Race!</h1>
+    </section>
+    <section>
+      <form class="main-form">
         <div class="main-form__input">
           <label for="fullName">Full Name</label>
           <input id="fullName" type="text" placeholder="Enter full name..." />
@@ -49,21 +51,21 @@
           </select>
           <button>Generate</button>
         </div>
-      </div>
-      <div class="buttons-container">
-        <div class="main-form__buttons">
-          <button>Generate all</button>
-          <button>Add participant</button>
+        <div class="buttons-container">
+          <div class="main-form__buttons">
+            <button>Generate all</button>
+            <button>Add participant</button>
+          </div>
+          <div class="main-form__buttons">
+            <button>Init</button>
+            <button>Clear</button>
+          </div>
+          <div class="main-form__buttons main-form__buttons--race">
+            <button>Race</button>
+          </div>
         </div>
-        <div class="main-form__buttons">
-          <button>Init</button>
-          <button>Clear</button>
-        </div>
-        <div class="main-form__buttons main-form__buttons--race">
-          <button>Race</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </section>
     <script type="module" src="/js/main.js"></script>
   </body>
 </html>
