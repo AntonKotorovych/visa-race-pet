@@ -26,7 +26,7 @@
         </div>
         <div class="main-form__input">
           <label for="balance">Balance</label>
-          <input id="balance" type="text" placeholder="Enter balance..." />
+          <input id="balance" type="number" placeholder="Enter balance..." />
           <div class="form-button">
             <button>Generate</button>
           </div>
@@ -39,12 +39,21 @@
           </div>
         </div>
         <div class="main-form__input">
-          <label for="documents">Documents</label>
-          <select id="documents">
-            <option selected>Select documents</option>
-            <option value="1">Passport, insurance and photo</option>
-            <option value="2">Don't have enough documents</option>
-          </select>
+          <label>Documents</label>
+          <div class="main-form-checkboxes">
+            <div>
+              <label for="passport">Passport</label>
+              <input type="checkbox" id="passport" />
+            </div>
+            <div>
+              <label for="insurance">Insurance</label>
+              <input type="checkbox" id="insurance" />
+            </div>
+            <div>
+              <label for="photo">Photo</label>
+              <input type="checkbox" id="photo" />
+            </div>
+          </div>
           <div class="form-button">
             <button>Generate</button>
           </div>
@@ -53,9 +62,12 @@
           <label for="englishLevel">English level</label>
           <select id="englishLevel">
             <option selected>Select english level</option>
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
             <option value="B1">B1</option>
             <option value="B2">B2</option>
             <option value="C1">C1</option>
+            <option value="C2">C2</option>
           </select>
           <div class="form-button">
             <button>Generate</button>
@@ -63,15 +75,25 @@
         </div>
         <div class="buttons-container">
           <div class="main-form__buttons">
-            <button>Generate all</button>
-            <button>Add participant</button>
+            <div>
+              <button>Generate all</button>
+            </div>
+            <div>
+              <button>Add participant</button>
+            </div>
           </div>
           <div class="main-form__buttons">
-            <button>Init</button>
-            <button>Clear</button>
+            <div>
+              <button>Init</button>
+            </div>
+            <div>
+              <button>Clear</button>
+            </div>
           </div>
           <div class="main-form__buttons main-form__buttons--race">
-            <button>Race</button>
+            <div>
+              <button>Race</button>
+            </div>
           </div>
         </div>
       </form>

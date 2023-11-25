@@ -4,6 +4,7 @@
 @import './button';
 @import './mainFormInputs';
 @import './mainFormButtons';
+@import './mainFormCheckboxes.scss';
 
 * {
   margin: 0;
@@ -21,9 +22,9 @@ body {
   & section {
     margin: 2rem 0;
   }
+}
 
-  .title {
-    font-size: $font-size-big;
-    text-align: center;
-  }
+.title {
+  font-size: $font-size-big;
+  text-align: center;
 }

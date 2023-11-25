@@ -2,11 +2,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 4rem;
   margin: 1.5rem 0;
 
   & label {
     font-size: $font-size-middle;
     width: 20%;
+    user-select: none;
   }
 
   & input {
@@ -26,5 +28,6 @@
     border: none;
     border-radius: 1.5rem;
     height: 3rem;
+    font-family: $main-font-family;
   }
 }
