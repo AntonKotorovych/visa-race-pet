@@ -5,6 +5,7 @@ button {
   font-family: $main-font-family;
   transition: all 0.3s ease;
   border: none;
+  margin: -0.5rem;
 
   &:hover {
     transform: scale(1.1);
