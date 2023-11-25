@@ -1,0 +1,18 @@
+.main-form__buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 1rem 0;
+
+  & button {
+    width: 45%;
+  }
+
+  &--race button {
+    width: 95%;
+  }
+}
+
+.form-button {
+  width: 20%;
+}

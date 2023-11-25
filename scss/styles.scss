@@ -1,7 +1,9 @@
 @import './colorMatrix';
 @import './fonts';
-@import './main-form';
+@import './mainForm';
 @import './button';
+@import './mainFormInputs';
+@import './mainFormButtons';
 
 * {
   margin: 0;
@@ -14,13 +16,14 @@ body {
   width: 90%;
   margin: auto;
   color: $text-color;
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: $main-font-family;
+
   & section {
     margin: 2rem 0;
   }
 
   .title {
-    font-size: $title-font-size;
+    font-size: $font-size-big;
     text-align: center;
   }
 }
