@@ -20,10 +20,6 @@ body {
   color: $text-color;
   font-family: $main-font-family;
   user-select: none;
-
-  & section {
-    margin: 2rem 0;
-  }
 }
 
 .title {
