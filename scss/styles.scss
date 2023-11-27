@@ -26,3 +26,13 @@ body {
   font-size: $font-size-big;
   text-align: center;
 }
+
+@media screen and (max-width: 770px) {
+  body {
+    width: 98%;
+  }
+
+  .title {
+    font-size: $font-size-medium;
+  }
+}

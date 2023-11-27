@@ -6,12 +6,21 @@ button {
   transition: all 0.4s ease;
   border: none;
   border-radius: 1rem;
-  font-size: $font-size-small;
+  font-size: $font-size-middle;
 
   &:hover {
     transform: scale(1.1);
     background-color: $hover-button-background-color;
     font-size: $font-size-middle;
     color: $hover-button-text-color;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  button {
+    font-size: $font-size-tiny;
+    &:hover {
+      font-size: $font-size-tiny;
+    }
   }
 }

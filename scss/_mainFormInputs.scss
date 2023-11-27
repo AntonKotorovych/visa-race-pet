@@ -31,3 +31,19 @@
     font-size: $font-size-small;
   }
 }
+
+@media screen and (max-width: 770px) {
+  .main-form__input {
+    & label {
+      font-size: $font-size-small;
+    }
+
+    & input {
+      font-size: $font-size-tiny;
+    }
+
+    & select {
+      font-size: $font-size-tiny;
+    }
+  }
+}
