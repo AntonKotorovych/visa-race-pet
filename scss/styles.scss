@@ -1,0 +1,38 @@
+@import './checkboxSizes';
+@import './colorMatrix';
+@import './fonts';
+@import './mainForm';
+@import './button';
+@import './mainFormInputs';
+@import './mainFormButtons';
+@import './mainFormCheckboxes.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color;
+  width: 90%;
+  margin: auto;
+  color: $text-color;
+  font-family: $main-font-family;
+  user-select: none;
+}
+
+.title {
+  font-size: $font-size-big;
+  text-align: center;
+}
+
+@media screen and (max-width: 770px) {
+  body {
+    width: 98%;
+  }
+
+  .title {
+    font-size: $font-size-medium;
+  }
+}
