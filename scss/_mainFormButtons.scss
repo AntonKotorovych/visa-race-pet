@@ -1,8 +1,15 @@
+.buttons-container {
+  width: 47%;
+  height: 100%;
+  margin: auto;
+}
+
 .main-form__buttons {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin: 1rem 0;
+  height: 3rem;
+  margin: 1.5rem 0;
 
   & div {
     width: 45%;
@@ -10,14 +17,22 @@
 
   &--race div {
     width: 95%;
+    height: 4.5rem;
+  }
+
+  &--race button {
+    background-color: $text-color;
+    font-size: $font-size-large;
+    height: 100%;
+    &:hover {
+      background-color: $race-background-hover-color;
+    }
   }
 }
 
 .form-button {
   width: 20%;
-}
-
-.buttons-container {
-  width: 50%;
-  margin: auto;
+  height: 3rem;
+  display: flex;
+  align-items: center;
 }
