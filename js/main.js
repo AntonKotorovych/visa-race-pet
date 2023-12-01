@@ -4,3 +4,4 @@ import Generator from './Generator/Generator.js';
 const generator = new Generator();
 
 generator.generateFullName();
+generator.generateBalance();

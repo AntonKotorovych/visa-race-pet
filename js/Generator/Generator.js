@@ -18,16 +18,32 @@ export default class Generator {
 
     this.documents = [document.getElementById('passport'), document.getElementById('insurance'), document.getElementById('photo')];
   }
+
   getRandomIndex(max) {
-    return Math.floor(Math.random() * max) + 1;
+    return Math.floor(Math.random() * max);
+  }
+
+  getRandomizeChance(succeedPercentage) {
+    const percents = Math.floor(Math.random() * 100) + 1;
+    return percents >= succeedPercentage ? true : false;
   }
 
   generateFullName() {
     const randomIndex = this.getRandomIndex(this.fullNames.length);
-    const fullNameElement = this.fullNames[randomIndex - 1];
-    const elem = this.fullNames.find(fullName => fullName === fullNameElement);
-    console.log(randomIndex);
-    console.log(fullNameElement);
-    console.log(elem);
+    const fullNameValue = this.fullNames[randomIndex];
+    return this.fullNames.find(fullName => fullName === fullNameValue);
+  }
+
+  generateBalance() {
+    const isSucceedGeneration = this.getRandomizeChance(60);
+    let currentBalance = 0;
+
+    if (isSucceedGeneration) {
+      currentBalance = 2000;
+      currentBalance += this.getRandomIndex(8000);
+    }
+    currentBalance += this.getRandomIndex(1999);
+
+    return currentBalance;
   }
 }
