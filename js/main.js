@@ -5,3 +5,5 @@ const generator = new Generator();
 
 generator.generateFullName();
 generator.generateBalance();
+generator.generateAge();
+generator.generateDocumentsQuantity();

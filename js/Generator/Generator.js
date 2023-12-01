@@ -36,14 +36,38 @@ export default class Generator {
 
   generateBalance() {
     const isSucceedGeneration = this.getRandomizeChance(60);
-    let currentBalance = 0;
+    let balance = 0;
 
     if (isSucceedGeneration) {
-      currentBalance = 2000;
-      currentBalance += this.getRandomIndex(8000);
+      balance = 2000;
+      balance += this.getRandomIndex(8000);
     }
-    currentBalance += this.getRandomIndex(1999);
+    balance += this.getRandomIndex(1999);
 
-    return currentBalance;
+    return balance;
+  }
+
+  generateAge() {
+    const isSucceedGeneration = this.getRandomizeChance(70);
+    let age = 0;
+
+    if (isSucceedGeneration) {
+      age = 18;
+      age += this.getRandomIndex(42);
+    }
+    age += this.getRandomIndex(18);
+
+    return age;
+  }
+
+  generateDocumentsQuantity() {
+    const isSucceedGeneration = this.getRandomizeChance(80);
+    let documentsQuantity = 0;
+
+    if (isSucceedGeneration) {
+      return (documentsQuantity = 3);
+    }
+
+    return (documentsQuantity += this.getRandomIndex(3));
   }
 }
