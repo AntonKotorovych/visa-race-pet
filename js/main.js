@@ -7,3 +7,4 @@ generator.generateFullName();
 generator.generateBalance();
 generator.generateAge();
 generator.generateDocumentsQuantity();
+generator.generateAllParticipants();
