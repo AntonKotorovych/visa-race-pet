@@ -1,3 +1,1 @@
-export default class UsersView {
-  changeInputValue(nodeElement) {}
-}
+export default class UsersView {}

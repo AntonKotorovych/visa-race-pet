@@ -1,50 +1,69 @@
 import '../scss/styles.scss';
 import Generator from './Generator/Generator.js';
-// import UsersModel from './UsersModel';
-// import UsersView from './UsersView.js';
+import UsersModel from './UsersModel';
+import UsersView from './UsersView.js';
 
 class UsersController {
   constructor() {
-    // this.usersModel = new UsersModel();
+    this.usersModel = new UsersModel([]);
     this.generator = new Generator();
-    // this.usersView = new this.usersView();
+    this.usersView = new UsersView();
   }
 
   isFullNameUnique(users, generatedFullName) {
-    for (let existingUser in users) {
-      const currentUserFullName = users[existingUser]?.fullName;
-      if (currentUserFullName === generatedFullName) {
-        return false;
-      }
-    }
-    return true;
+    return !users.some(user => user.fullName === generatedFullName);
   }
 
   generateAllParticipants() {
-    const users = {};
+    if (this.usersModel.users.length > 0) this.clearAllParticipants();
 
-    for (let i = 0; i <= 4; i++) {
-      const currentUser = `user${i}`;
-
+    for (let i = 0; i < 5; i++) {
       let generatedFullName = this.generator.generateFullName();
 
-      while (!this.isFullNameUnique(users, generatedFullName)) {
+      while (!this.isFullNameUnique(this.usersModel.getUsers(), generatedFullName)) {
         generatedFullName = this.generator.generateFullName();
       }
 
-      users[currentUser] = {
+      const newUser = {
         fullName: generatedFullName,
         balance: this.generator.generateBalance(),
         age: this.generator.generateAge(),
         documentsQuantity: this.generator.generateDocumentsQuantity(),
         englishLevel: this.generator.generateEnglishLevel(),
       };
+
+      this.usersModel.addUser(newUser);
     }
-    // const usersObject = new this.usersModel();
+
+    const users = this.usersModel.getUsers();
     console.log(users);
+  }
+
+  clearAllParticipants() {
+    this.usersModel.users = [];
   }
 }
 
+const fullName = document.getElementById('fullName');
+
+const generateFullName = document.getElementById('generateFullName');
+const generateBalance = document.getElementById('generateBalance');
+const generateAge = document.getElementById('generateAge');
+const generateDocuments = document.getElementById('generateDocuments');
+const generateEnglishLevel = document.getElementById('generateEnglishLevel');
+
+const generateAll = document.getElementById('generateAll');
+
 const users = new UsersController();
 
-users.generateAllParticipants();
+document.addEventListener('click', event => {
+  event.preventDefault();
+  if (event.target === generateAll) {
+    users.generateAllParticipants();
+  }
+
+  if (event.target === generateFullName) {
+    fullName.value = users.generator.generateFullName();
+    // console.log(generateFullName);
+  }
+});

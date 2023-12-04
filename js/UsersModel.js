@@ -1,7 +1,13 @@
 export default class UsersModel {
-  users = {};
-
   constructor(users) {
     this.users = users;
+  }
+
+  addUser(user) {
+    this.users.push(user);
+  }
+
+  getUsers() {
+    return this.users;
   }
 }
