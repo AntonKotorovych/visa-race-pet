@@ -80,21 +80,4 @@ export default class Generator {
 
     return isNotValidEnglishLevels[this.getRandomIndex(isNotValidEnglishLevels.length)];
   }
-
-  generateAllParticipants() {
-    const participants = {};
-
-    for (let i = 0; i <= 4; i++) {
-      const currentId = `id${i}`;
-      participants[currentId] = {
-        fullName: this.generateFullName(),
-        balance: this.generateBalance(),
-        age: this.generateAge(),
-        documents: this.generateDocumentsQuantity(),
-        englishLevel: this.generateEnglishLevel(),
-      };
-    }
-
-    return participants;
-  }
 }
