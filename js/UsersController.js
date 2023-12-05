@@ -36,7 +36,6 @@ class UsersController {
     }
 
     const users = this.usersModel.getUsers();
-    console.log(users);
   }
 
   clearAllParticipants() {
@@ -44,26 +43,44 @@ class UsersController {
   }
 }
 
-const fullName = document.getElementById('fullName');
+// Handling user's actions
 
-const generateFullName = document.getElementById('generateFullName');
-const generateBalance = document.getElementById('generateBalance');
-const generateAge = document.getElementById('generateAge');
-const generateDocuments = document.getElementById('generateDocuments');
-const generateEnglishLevel = document.getElementById('generateEnglishLevel');
+const generateFullNameButton = document.getElementById('generateFullName');
+const generateBalanceButton = document.getElementById('generateBalance');
+const generateAgeButton = document.getElementById('generateAge');
+const generateDocumentsButton = document.getElementById('generateDocuments');
+const generateEnglishLevelButton = document.getElementById('generateEnglishLevel');
 
-const generateAll = document.getElementById('generateAll');
+const generateAllButton = document.getElementById('generateAll');
 
 const users = new UsersController();
 
+// preventDefault listener
 document.addEventListener('click', event => {
+  if (event.target.type === 'checkbox') return;
   event.preventDefault();
-  if (event.target === generateAll) {
-    users.generateAllParticipants();
-  }
+});
 
-  if (event.target === generateFullName) {
-    fullName.value = users.generator.generateFullName();
-    // console.log(generateFullName);
-  }
+generateAllButton.addEventListener('click', () => {
+  users.generateAllParticipants();
+});
+
+generateFullNameButton.addEventListener('click', () => {
+  const fullName = users.generator.generateFullName();
+  users.usersView.renderFullNameInput(fullName);
+});
+
+generateBalanceButton.addEventListener('click', () => {
+  const balance = users.generator.generateBalance();
+  users.usersView.renderBalanceInput(balance);
+});
+
+generateAgeButton.addEventListener('click', () => {
+  const age = users.generator.generateAge();
+  users.usersView.renderAgeInput(age);
+});
+
+generateDocumentsButton.addEventListener('click', () => {
+  const documentsQuantity = users.generator.generateDocumentsQuantity();
+  users.usersView.renderDocumentsInput(documentsQuantity);
 });
