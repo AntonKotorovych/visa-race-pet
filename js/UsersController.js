@@ -84,3 +84,8 @@ generateDocumentsButton.addEventListener('click', () => {
   const documentsQuantity = users.generator.generateDocumentsQuantity();
   users.usersView.renderDocumentsInput(documentsQuantity);
 });
+
+generateEnglishLevelButton.addEventListener('click', () => {
+  const englishLevel = users.generator.generateEnglishLevel();
+  users.usersView.renderEnglishLevelInput(englishLevel);
+});

@@ -33,4 +33,13 @@ export default class UsersView {
 
     checkboxArrayHandling(checkboxArray, value);
   }
+
+  renderEnglishLevelInput(value) {
+    console.log(value);
+    for (const option of this.englishLevelInput.options) {
+      if (option.value === value) {
+        option.selected = true;
+      }
+    }
+  }
 }
