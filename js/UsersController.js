@@ -36,6 +36,7 @@ class UsersController {
     }
 
     const users = this.usersModel.getUsers();
+    console.log(users);
   }
 
   clearAllParticipants() {

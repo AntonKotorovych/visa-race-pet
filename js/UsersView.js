@@ -35,7 +35,6 @@ export default class UsersView {
   }
 
   renderEnglishLevelInput(value) {
-    console.log(value);
     for (const option of this.englishLevelInput.options) {
       if (option.value === value) {
         option.selected = true;
