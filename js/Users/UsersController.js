@@ -4,42 +4,20 @@ import UsersView from './UsersView';
 
 class UsersController {
   constructor() {
-    this.usersModel = new UsersModel([]);
+    this.usersModel = new UsersModel();
     this.generator = new Generator();
     this.usersView = new UsersView();
-  }
-
-  isFullNameUnique(users, generatedFullName) {
-    return !users.some(user => user.fullName === generatedFullName);
   }
 
   generateAllParticipants() {
     if (this.usersModel.users.length > 0) this.clearAllParticipants();
 
-    for (let i = 0; i < 5; i++) {
-      let generatedFullName = this.generator.generateFullName();
-
-      while (!this.isFullNameUnique(this.usersModel.getUsers(), generatedFullName)) {
-        generatedFullName = this.generator.generateFullName();
-      }
-
-      const newUser = {
-        fullName: generatedFullName,
-        balance: this.generator.generateBalance(),
-        age: this.generator.generateAge(),
-        documentsQuantity: this.generator.generateDocumentsQuantity(),
-        englishLevel: this.generator.generateEnglishLevel(),
-      };
-
-      this.usersModel.addUser(newUser);
-    }
-
-    const users = this.usersModel.getUsers();
-    console.log(users);
+    this.usersModel.addAllUsers();
+    console.log(this.usersModel.getUsers());
   }
 
   clearAllParticipants() {
-    this.usersModel.users = [];
+    this.usersModel.clearAllParticipants();
   }
 }
 
@@ -54,12 +32,6 @@ const generateEnglishLevelButton = document.getElementById('generateEnglishLevel
 const generateAllButton = document.getElementById('generateAll');
 
 const users = new UsersController();
-
-// preventDefault listener
-document.addEventListener('click', event => {
-  if (event.target.type === 'checkbox') return;
-  event.preventDefault();
-});
 
 generateAllButton.addEventListener('click', () => {
   users.generateAllParticipants();
