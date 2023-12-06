@@ -74,8 +74,8 @@ export default class Generator {
     const validEnglishLevels = this.englishLevels.slice(2);
     const notValidEnglishLevels = this.englishLevels.slice(0, 2);
 
-    if (isSucceedGeneration) return validEnglishLevels[this.getRandomNumber(validEnglishLevels.length)];
+    if (isSucceedGeneration) return validEnglishLevels[this.getRandomNumber(0, validEnglishLevels.length - 1)];
 
-    return notValidEnglishLevels[this.getRandomNumber(notValidEnglishLevels.length)];
+    return notValidEnglishLevels[this.getRandomNumber(0, notValidEnglishLevels.length - 1)];
   }
 }
