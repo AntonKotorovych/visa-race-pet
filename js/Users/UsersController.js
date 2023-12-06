@@ -1,7 +1,6 @@
-import '../scss/styles.scss';
-import Generator from './Generator/Generator.js';
+import Generator from '../Generator/Generator';
 import UsersModel from './UsersModel';
-import UsersView from './UsersView.js';
+import UsersView from './UsersView';
 
 class UsersController {
   constructor() {
@@ -82,11 +81,13 @@ generateAgeButton.addEventListener('click', () => {
 });
 
 generateDocumentsButton.addEventListener('click', () => {
-  const documentsQuantity = users.generator.generateDocumentsQuantity();
-  users.usersView.renderDocumentsInput(documentsQuantity);
+  const documents = users.generator.generateDocuments();
+  users.usersView.renderDocumentsInput(documents);
 });
 
 generateEnglishLevelButton.addEventListener('click', () => {
   const englishLevel = users.generator.generateEnglishLevel();
   users.usersView.renderEnglishLevelInput(englishLevel);
 });
+
+export * from './UsersController';

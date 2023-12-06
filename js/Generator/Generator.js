@@ -16,21 +16,20 @@ export default class Generator {
 
     this.englishLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
-    this.documents = [document.getElementById('passport'), document.getElementById('insurance'), document.getElementById('photo')];
+    this.documents = ['passport', 'insurance', 'photo'];
   }
 
-  getRandomIndex(max) {
-    return Math.floor(Math.random() * max);
+  getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   getRandomizeChance(succeedPercentage) {
     const percents = Math.floor(Math.random() * 100) + 1;
-    return percents <= succeedPercentage ? true : false;
+    return percents <= succeedPercentage;
   }
 
   generateFullName() {
-    const randomIndex = this.getRandomIndex(this.fullNames.length);
-    const fullNameValue = this.fullNames[randomIndex];
+    const fullNameValue = this.fullNames[this.getRandomNumber(0, this.fullNames.length - 1)];
     return this.fullNames.find(fullName => fullName === fullNameValue);
   }
 
@@ -39,10 +38,10 @@ export default class Generator {
     let balance = 0;
 
     if (isSucceedGeneration) {
-      balance = 2000;
-      balance += this.getRandomIndex(8000);
+      balance += this.getRandomNumber(2000, 10000);
+    } else {
+      balance += this.getRandomNumber(0, 1999);
     }
-    balance += this.getRandomIndex(1999);
 
     return balance;
   }
@@ -52,32 +51,31 @@ export default class Generator {
     let age = 0;
 
     if (isSucceedGeneration) {
-      age = 18;
-      age += this.getRandomIndex(42);
+      age += this.getRandomNumber(18, 60);
+    } else {
+      age += this.getRandomNumber(1, 17);
     }
-    age += this.getRandomIndex(18);
 
     return age;
   }
 
-  generateDocumentsQuantity() {
+  generateDocuments() {
     const isSucceedGeneration = this.getRandomizeChance(80);
-    let documentsQuantity = 0;
 
     if (isSucceedGeneration) {
-      return (documentsQuantity = 3);
+      return this.documents;
+    } else {
+      return this.documents.slice(0, this.getRandomNumber(1, 2));
     }
-
-    return (documentsQuantity += this.getRandomIndex(3));
   }
 
   generateEnglishLevel() {
     const isSucceedGeneration = this.getRandomizeChance(30);
-    const isValidEnglishLevels = this.englishLevels.slice(2);
-    const isNotValidEnglishLevels = this.englishLevels.slice(0, 2);
+    const validEnglishLevels = this.englishLevels.slice(2);
+    const notValidEnglishLevels = this.englishLevels.slice(0, 2);
 
-    if (isSucceedGeneration) return isValidEnglishLevels[this.getRandomIndex(isValidEnglishLevels.length)];
+    if (isSucceedGeneration) return validEnglishLevels[this.getRandomNumber(validEnglishLevels.length)];
 
-    return isNotValidEnglishLevels[this.getRandomIndex(isNotValidEnglishLevels.length)];
+    return notValidEnglishLevels[this.getRandomNumber(notValidEnglishLevels.length)];
   }
 }
