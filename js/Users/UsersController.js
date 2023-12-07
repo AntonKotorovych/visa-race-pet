@@ -7,13 +7,14 @@ class UsersController {
     this.usersModel = new UsersModel();
     this.generator = new Generator();
     this.usersView = new UsersView();
+
+    this.usersView.bindFullNameGenerateButton(this);
   }
 
   generateAllParticipants() {
     if (this.usersModel.users.length > 0) this.clearAllParticipants();
 
     this.usersModel.addAllUsers();
-    console.log(this.usersModel.getUsers());
   }
 
   clearAllParticipants() {
@@ -32,34 +33,5 @@ const generateEnglishLevelButton = document.getElementById('generateEnglishLevel
 const generateAllButton = document.getElementById('generateAll');
 
 const users = new UsersController();
-
-generateAllButton.addEventListener('click', () => {
-  users.generateAllParticipants();
-});
-
-generateFullNameButton.addEventListener('click', () => {
-  const fullName = users.generator.generateFullName();
-  users.usersView.renderFullNameInput(fullName);
-});
-
-generateBalanceButton.addEventListener('click', () => {
-  const balance = users.generator.generateBalance();
-  users.usersView.renderBalanceInput(balance);
-});
-
-generateAgeButton.addEventListener('click', () => {
-  const age = users.generator.generateAge();
-  users.usersView.renderAgeInput(age);
-});
-
-generateDocumentsButton.addEventListener('click', () => {
-  const documents = users.generator.generateDocuments();
-  users.usersView.renderDocumentsInput(documents);
-});
-
-generateEnglishLevelButton.addEventListener('click', () => {
-  const englishLevel = users.generator.generateEnglishLevel();
-  users.usersView.renderEnglishLevelInput(englishLevel);
-});
 
 export * from './UsersController';

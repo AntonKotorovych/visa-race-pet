@@ -1,10 +1,23 @@
 export default class UsersView {
   constructor() {
+    // All Buttons
+    this.fullNameGenerateButton = document.getElementById('generateFullName');
+    this.balanceGenerateButton = document.getElementById('generateBalance');
+    this.ageGenerateButton = document.getElementById('generateAge');
+    this.documentsGenerateButton = document.getElementById('generateDocuments');
+    this.englishLevelGenerateButton = document.getElementById('generateEnglishLevel');
+    this.generateAllButton = document.getElementById('generateAll');
+
+    // All input fields
     this.fullNameInput = document.getElementById('fullName');
     this.balanceInput = document.getElementById('balance');
     this.ageInput = document.getElementById('age');
     this.documentsInput = document.getElementById('documents');
     this.englishLevelInput = document.getElementById('englishLevel');
+  }
+
+  bindFullNameGenerateButton(handler) {
+    this.fullNameGenerateButton.addEventListener('click', handler);
   }
 
   renderFullNameInput(value) {
