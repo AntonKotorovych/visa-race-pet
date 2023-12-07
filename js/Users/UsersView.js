@@ -60,18 +60,13 @@ export default class UsersView {
   }
 
   renderDocumentsInput(value) {
-    const checkboxArray = this.documentsInput.querySelectorAll('div');
+    const checkboxArray = this.documentsInput.children;
 
-    function checkboxArrayHandling(checkboxArray, documentsCounter) {
-      const slicedCheckboxArray = Array.from(checkboxArray).slice(0, documentsCounter);
-
-      slicedCheckboxArray.forEach(checkboxDiv => {
-        const checkbox = checkboxDiv.querySelector('input[type="checkbox"]');
-        checkbox.checked = true;
-      });
+    for (let i = 0; i < checkboxArray.length; i++) {
+      if (checkboxArray[i].innerText === value[i]) {
+        checkboxArray[i].querySelector('input[type="checkbox"').checked = true;
+      }
     }
-
-    checkboxArrayHandling(checkboxArray, value);
   }
 
   renderEnglishLevelInput(value) {
