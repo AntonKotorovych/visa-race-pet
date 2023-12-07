@@ -16,8 +16,31 @@ export default class UsersView {
     this.englishLevelInput = document.getElementById('englishLevel');
   }
 
-  bindFullNameGenerateButton(handler) {
-    this.fullNameGenerateButton.addEventListener('click', handler);
+  bindEvents(handler) {
+    this.fullNameGenerateButton.addEventListener('click', () => {
+      const fullName = handler.generateFullName();
+      this.renderFullNameInput(fullName);
+    });
+
+    this.balanceGenerateButton.addEventListener('click', () => {
+      const balance = handler.generateBalance();
+      this.renderBalanceInput(balance);
+    });
+
+    this.ageGenerateButton.addEventListener('click', () => {
+      const age = handler.generateAge();
+      this.renderAgeInput(age);
+    });
+
+    this.documentsGenerateButton.addEventListener('click', () => {
+      const documents = handler.generateDocuments();
+      this.renderDocumentsInput(documents);
+    });
+
+    this.englishLevelGenerateButton.addEventListener('click', () => {
+      const englishLevel = handler.generateEnglishLevel();
+      this.renderEnglishLevelInput(englishLevel);
+    });
   }
 
   renderFullNameInput(value) {
