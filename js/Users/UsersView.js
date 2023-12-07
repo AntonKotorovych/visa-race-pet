@@ -41,6 +41,10 @@ export default class UsersView {
       const englishLevel = handler.generateEnglishLevel();
       this.renderEnglishLevelInput(englishLevel);
     });
+
+    this.generateAllButton.addEventListener('click', () => {
+      handler.generateAllParticipants();
+    });
   }
 
   renderFullNameInput(value) {

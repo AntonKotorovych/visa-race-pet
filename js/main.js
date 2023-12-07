@@ -1,3 +1,5 @@
 'use strict';
 import '../scss/styles.scss';
-import * as UsersController from './Users/UsersController';
+import App from './Users/UsersController';
+
+const app = new App();
