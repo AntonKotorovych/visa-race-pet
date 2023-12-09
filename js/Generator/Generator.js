@@ -29,34 +29,28 @@ export default class Generator {
   }
 
   generateFullName() {
-    const fullNameValue = this.fullNames[this.getRandomNumber(0, this.fullNames.length - 1)];
-    return this.fullNames.find(fullName => fullName === fullNameValue);
+    const fullName = this.fullNames[this.getRandomNumber(0, this.fullNames.length - 1)];
+    return fullName;
   }
 
   generateBalance() {
     const isSucceedGeneration = this.getRandomizeChance(60);
-    let balance = 0;
 
     if (isSucceedGeneration) {
-      balance += this.getRandomNumber(2000, 10000);
+      return this.getRandomNumber(2000, 10000);
     } else {
-      balance += this.getRandomNumber(0, 1999);
+      return this.getRandomNumber(0, 1999);
     }
-
-    return balance;
   }
 
   generateAge() {
     const isSucceedGeneration = this.getRandomizeChance(70);
-    let age = 0;
 
     if (isSucceedGeneration) {
-      age += this.getRandomNumber(18, 60);
+      return this.getRandomNumber(18, 60);
     } else {
-      age += this.getRandomNumber(1, 17);
+      return this.getRandomNumber(1, 17);
     }
-
-    return age;
   }
 
   generateDocuments() {
