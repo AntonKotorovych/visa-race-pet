@@ -19,10 +19,6 @@ export default class UsersModel {
     this.newUser.age = age;
   }
 
-  addDocument(document) {
-    this.newUser.documents.push(document);
-  }
-
   addDocuments(documents) {
     this.newUser.documents = documents;
   }
@@ -61,8 +57,9 @@ export default class UsersModel {
     this.users = [];
   }
 
-  addParticipant() {
+  addParticipant(documents) {
     if (this.users.length === 5) return;
+    this.newUser.documents = documents;
     this.users.push(this.newUser);
     this.newUser = {};
   }

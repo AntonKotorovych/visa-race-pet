@@ -3,7 +3,6 @@ import Generator from '../Generator/Generator';
 export default class UsersView {
   constructor() {
     this.generator = new Generator();
-    this.documents;
 
     // All Buttons
     this.fullNameGenerateButton = document.getElementById('generateFullName');
@@ -89,7 +88,16 @@ export default class UsersView {
 
   bindAddParticipant(handler) {
     this.addParticipantButton.addEventListener('click', () => {
-      handler();
+      const documentsArray = this.documentsInput.children;
+      let documents = [];
+      for (let i = 0; i < documentsArray.length; i++) {
+        const checkbox = documentsArray[i].querySelector('input[type="checkbox"]');
+        if (checkbox.checked) documents.push(checkbox.id);
+      }
+
+      this.resetAllInputs();
+      handler(documents);
+      alert('Participant has been added successfully!');
     });
   }
 
@@ -122,5 +130,19 @@ export default class UsersView {
         option.selected = true;
       }
     }
+  }
+
+  resetAllInputs() {
+    this.fullNameInput.value = '';
+    this.balanceInput.value = '';
+    this.ageInput.value = '';
+
+    const checkboxArray = this.documentsInput.children;
+
+    for (let i = 0; i < checkboxArray.length; i++) {
+      checkboxArray[i].querySelector('input[type="checkbox"]').checked = false;
+    }
+
+    this.englishLevelInput.children[0].selected = true;
   }
 }

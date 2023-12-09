@@ -46,7 +46,7 @@ export default class UsersController {
     this.usersModel.clearAllUsers();
   };
 
-  handleAddParticipant = () => {
-    this.usersModel.addParticipant();
+  handleAddParticipant = documents => {
+    this.usersModel.addParticipant(documents);
   };
 }
