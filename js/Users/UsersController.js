@@ -15,6 +15,7 @@ export default class UsersController {
     this.usersView.bindEnglishLevelInput(this.handleEnglishLevel);
     this.usersView.bindAddAllUsers(this.handleAddAllUsers);
     this.usersView.bindClearAllUsers(this.handleClearAllUsers);
+    this.usersView.bindAddParticipant(this.handleAddParticipant);
   }
 
   handleFullName = fullName => {
@@ -43,5 +44,9 @@ export default class UsersController {
 
   handleClearAllUsers = () => {
     this.usersModel.clearAllUsers();
+  };
+
+  handleAddParticipant = () => {
+    this.usersModel.addParticipant();
   };
 }

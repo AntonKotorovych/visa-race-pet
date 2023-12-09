@@ -32,9 +32,9 @@ export default class UsersModel {
   }
 
   addAllUsers() {
-    if (this.users.length === 5) return;
-
     for (let i = 0; i < 5; i++) {
+      if (this.users.length === 5) return;
+
       let generatedFullName = this.generator.generateFullName();
 
       while (!this.getIsFullNameUnique(this.getUsers(), generatedFullName)) {
@@ -55,6 +55,12 @@ export default class UsersModel {
 
   clearAllUsers() {
     this.users = [];
+  }
+
+  addParticipant() {
+    if (this.users.length === 5) return;
+    this.users.push(this.newUser);
+    this.newUser = {};
   }
 
   getUsers() {
