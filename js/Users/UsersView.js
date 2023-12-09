@@ -1,5 +1,9 @@
+import Generator from '../Generator/Generator';
+
 export default class UsersView {
   constructor() {
+    this.generator = new Generator();
+
     // All Buttons
     this.fullNameGenerateButton = document.getElementById('generateFullName');
     this.balanceGenerateButton = document.getElementById('generateBalance');
@@ -16,42 +20,51 @@ export default class UsersView {
     this.englishLevelInput = document.getElementById('englishLevel');
   }
 
-  bindEvents(handler) {
+  bindFullNameInput(handler) {
     this.fullNameGenerateButton.addEventListener('click', () => {
-      const fullName = handler.generateFullName();
-      this.renderFullNameInput(fullName);
-    });
-
-    this.balanceGenerateButton.addEventListener('click', () => {
-      const balance = handler.generateBalance();
-      this.renderBalanceInput(balance);
-    });
-
-    this.ageGenerateButton.addEventListener('click', () => {
-      const age = handler.generateAge();
-      this.renderAgeInput(age);
-    });
-
-    this.documentsGenerateButton.addEventListener('click', () => {
-      const documents = handler.generateDocuments();
-      this.renderDocumentsInput(documents);
-    });
-
-    this.englishLevelGenerateButton.addEventListener('click', () => {
-      const englishLevel = handler.generateEnglishLevel();
-      this.renderEnglishLevelInput(englishLevel);
-    });
-
-    this.generateAllButton.addEventListener('click', () => {
-      handler.generateAllParticipants();
+      const fullName = this.generator.generateFullName();
+      this.renderFullName(fullName);
+      handler(fullName);
     });
   }
 
-  renderFullNameInput(value) {
+  bindBalanceInput(handler) {
+    this.balanceGenerateButton.addEventListener('click', () => {
+      const balance = this.generator.generateBalance();
+      this.renderBalance(balance);
+      handler(balance);
+    });
+  }
+
+  bindAgeInput(handler) {
+    this.ageGenerateButton.addEventListener('click', () => {
+      const age = this.generator.generateAge();
+      this.renderAgeInput(age);
+      handler(age);
+    });
+  }
+
+  bindDocumentsInput(handler) {
+    this.documentsGenerateButton.addEventListener('click', () => {
+      const documents = this.generator.generateDocuments();
+      this.renderDocumentsInput(documents);
+      handler(documents);
+    });
+  }
+
+  bindEnglishLevelInput(handler) {
+    this.englishLevelGenerateButton.addEventListener('click', () => {
+      const englishLevel = this.generator.generateEnglishLevel();
+      this.renderEnglishLevelInput(englishLevel);
+      handler(englishLevel);
+    });
+  }
+
+  renderFullName(value) {
     this.fullNameInput.value = value;
   }
 
-  renderBalanceInput(value) {
+  renderBalance(value) {
     this.balanceInput.value = value;
   }
 

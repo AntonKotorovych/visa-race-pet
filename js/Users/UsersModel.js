@@ -3,8 +3,31 @@ import Generator from '../Generator/Generator';
 export default class UsersModel {
   constructor(users = []) {
     this.users = users;
+    this.newUser = {};
     this.generator = new Generator();
   }
+
+  addFullName(fullName) {
+    this.newUser.fullName = fullName;
+  }
+
+  addBalance(balance) {
+    this.newUser.balance = balance;
+  }
+
+  addAge(age) {
+    this.newUser.age = age;
+  }
+
+  addDocuments(documents) {
+    this.newUser.documents = documents;
+  }
+
+  addEnglishLevel(englishLevel) {
+    this.newUser.englishLevel = englishLevel;
+  }
+
+  addUser() {}
 
   getIsFullNameUnique(users, generatedFullName) {
     return !users.some(user => user.fullName === generatedFullName);
