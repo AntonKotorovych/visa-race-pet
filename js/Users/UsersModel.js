@@ -27,13 +27,13 @@ export default class UsersModel {
     this.newUser.englishLevel = englishLevel;
   }
 
-  addUser() {}
-
   getIsFullNameUnique(users, generatedFullName) {
     return !users.some(user => user.fullName === generatedFullName);
   }
 
   addAllUsers() {
+    if (this.users.length === 5) return;
+
     for (let i = 0; i < 5; i++) {
       let generatedFullName = this.generator.generateFullName();
 
@@ -53,11 +53,11 @@ export default class UsersModel {
     }
   }
 
-  getUsers() {
-    return this.users;
+  clearAllUsers() {
+    this.users = [];
   }
 
-  clearAllParticipants() {
-    this.users = [];
+  getUsers() {
+    return this.users;
   }
 }

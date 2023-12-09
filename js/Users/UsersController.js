@@ -13,6 +13,8 @@ export default class UsersController {
     this.usersView.bindAgeInput(this.handleAge);
     this.usersView.bindDocumentsInput(this.handleDocuments);
     this.usersView.bindEnglishLevelInput(this.handleEnglishLevel);
+    this.usersView.bindAddAllUsers(this.handleAddAllUsers);
+    this.usersView.bindClearAllUsers(this.handleClearAllUsers);
   }
 
   handleFullName = fullName => {
@@ -35,33 +37,11 @@ export default class UsersController {
     this.usersModel.addEnglishLevel(englishLevel);
   };
 
-  generateAllParticipants() {
-    if (this.usersModel.users.length > 0) this.clearAllParticipants();
+  handleAddAllUsers = () => {
     this.usersModel.addAllUsers();
-    console.log(this.usersModel.users);
-  }
+  };
 
-  generateFullName() {
-    return this.generator.generateFullName();
-  }
-
-  generateBalance() {
-    return this.generator.generateBalance();
-  }
-
-  generateAge() {
-    return this.generator.generateAge();
-  }
-
-  generateDocuments() {
-    return this.generator.generateDocuments();
-  }
-
-  generateEnglishLevel() {
-    return this.generator.generateEnglishLevel();
-  }
-
-  clearAllParticipants() {
-    this.usersModel.clearAllParticipants();
-  }
+  handleClearAllUsers = () => {
+    this.usersModel.clearAllUsers();
+  };
 }

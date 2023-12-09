@@ -11,6 +11,7 @@ export default class UsersView {
     this.documentsGenerateButton = document.getElementById('generateDocuments');
     this.englishLevelGenerateButton = document.getElementById('generateEnglishLevel');
     this.generateAllButton = document.getElementById('generateAll');
+    this.clearAllButton = document.getElementById('clearAll');
 
     // All input fields
     this.fullNameInput = document.getElementById('fullName');
@@ -57,6 +58,18 @@ export default class UsersView {
       const englishLevel = this.generator.generateEnglishLevel();
       this.renderEnglishLevelInput(englishLevel);
       handler(englishLevel);
+    });
+  }
+
+  bindAddAllUsers(handler) {
+    this.generateAllButton.addEventListener('click', () => {
+      handler();
+    });
+  }
+
+  bindClearAllUsers(handler) {
+    this.clearAllButton.addEventListener('click', () => {
+      handler();
     });
   }
 
