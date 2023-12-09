@@ -19,6 +19,10 @@ export default class UsersModel {
     this.newUser.age = age;
   }
 
+  addDocument(document) {
+    this.newUser.documents.push(document);
+  }
+
   addDocuments(documents) {
     this.newUser.documents = documents;
   }

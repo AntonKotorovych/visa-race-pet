@@ -3,6 +3,7 @@ import Generator from '../Generator/Generator';
 export default class UsersView {
   constructor() {
     this.generator = new Generator();
+    this.documents;
 
     // All Buttons
     this.fullNameGenerateButton = document.getElementById('generateFullName');
@@ -28,6 +29,10 @@ export default class UsersView {
       this.renderFullName(fullName);
       handler(fullName);
     });
+
+    this.fullNameInput.addEventListener('input', () => {
+      handler(this.fullNameInput.value);
+    });
   }
 
   bindBalanceInput(handler) {
@@ -36,6 +41,10 @@ export default class UsersView {
       this.renderBalance(balance);
       handler(balance);
     });
+
+    this.balanceInput.addEventListener('input', () => {
+      handler(this.balanceInput.value);
+    });
   }
 
   bindAgeInput(handler) {
@@ -43,6 +52,10 @@ export default class UsersView {
       const age = this.generator.generateAge();
       this.renderAgeInput(age);
       handler(age);
+    });
+
+    this.ageInput.addEventListener('input', () => {
+      handler(this.ageInput.value);
     });
   }
 
@@ -96,8 +109,9 @@ export default class UsersView {
     const checkboxArray = this.documentsInput.children;
 
     for (let i = 0; i < checkboxArray.length; i++) {
-      if (checkboxArray[i].innerText === value[i]) {
-        checkboxArray[i].querySelector('input[type="checkbox"').checked = true;
+      const checkboxId = checkboxArray[i].querySelector('input[type="checkbox"]').id;
+      if (checkboxId === value[i]) {
+        checkboxArray[i].querySelector('input[type="checkbox"]').checked = true;
       }
     }
   }

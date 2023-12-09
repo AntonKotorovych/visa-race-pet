@@ -16,7 +16,7 @@ export default class Generator {
 
     this.englishLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
-    this.documents = ['Passport', 'Insurance', 'Photo'];
+    this.documents = ['passport', 'insurance', 'photo'];
   }
 
   getRandomNumber(min, max) {
