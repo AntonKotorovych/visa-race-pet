@@ -26,6 +26,10 @@ export default class UsersController {
     this.usersView.bindAddAllUsers(this.handleAddAllUsers);
     this.usersView.bindClearAllUsers(this.handleClearAllUsers);
     this.usersView.bindAddParticipant(this.handleAddParticipant);
+
+    this.usersView.bindUpdateParticipantsCounter(this.handleAddParticipantsCounter);
+    this.usersView.bindAddAllUsers(this.handleAddAllParticipantsCounter);
+    this.usersView.bindClearAllUsers(this.handleClearAllParticipantsCounter);
   }
 
   handleGeneratedFullName = () => {
@@ -83,5 +87,17 @@ export default class UsersController {
 
   handleAddParticipant = documents => {
     this.usersModel.addParticipant(documents);
+  };
+
+  handleAddParticipantsCounter = () => {
+    this.usersView.renderParticipantsCounter(this.usersModel.countParticipants());
+  };
+
+  handleAddAllParticipantsCounter = () => {
+    this.usersView.renderParticipantsCounter(this.usersModel.countParticipants());
+  };
+
+  handleClearAllParticipantsCounter = () => {
+    this.usersView.renderParticipantsCounter(this.usersModel.countParticipants());
   };
 }

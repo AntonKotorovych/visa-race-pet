@@ -105,6 +105,10 @@ export default class UsersModel {
     };
   }
 
+  countParticipants() {
+    return `${this.users.length} / 5 participants added`;
+  }
+
   getUsers() {
     return this.users;
   }

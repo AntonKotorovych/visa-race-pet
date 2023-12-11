@@ -23,6 +23,9 @@ export default class UsersView {
     this.ageInput = document.getElementById('age');
     this.documentsInput = document.getElementById('documents');
     this.englishLevelInput = document.getElementById('englishLevel');
+
+    // Counter span
+    this.participantsCounter = document.getElementById('participantsCounter');
   }
 
   bindGeneratedFullName(handler) {
@@ -109,7 +112,12 @@ export default class UsersView {
     this.addParticipantButton.addEventListener('click', () => {
       handler();
       this.resetAllInputs();
-      alert('Participant has been added successfully!');
+    });
+  }
+
+  bindUpdateParticipantsCounter(handler) {
+    this.addParticipantButton.addEventListener('click', () => {
+      handler();
     });
   }
 
@@ -140,6 +148,10 @@ export default class UsersView {
         option.selected = true;
       }
     }
+  }
+
+  renderParticipantsCounter(value) {
+    this.participantsCounter.innerText = value;
   }
 
   resetAllInputs() {
