@@ -3,24 +3,58 @@ import Generator from '../Generator/Generator';
 export default class UsersModel {
   constructor(users = []) {
     this.users = users;
-    this.newUser = {};
+    this.newUser = {
+      fullName: '',
+      balance: '',
+      age: '',
+      documents: [],
+      englishLevel: '',
+    };
     this.generator = new Generator();
   }
 
-  addFullName(fullName) {
+  addGeneratedFullName() {
+    this.newUser.fullName = this.generator.generateFullName();
+  }
+
+  addFullNameInput(fullName) {
     this.newUser.fullName = fullName;
   }
 
-  addBalance(balance) {
+  addGeneratedBalance() {
+    this.newUser.balance = this.generator.generateBalance();
+  }
+
+  addBalanceInput(balance) {
     this.newUser.balance = balance;
   }
 
-  addAge(age) {
+  addGeneratedAge() {
+    this.newUser.age = this.generator.generateAge();
+  }
+
+  addAgeInput(age) {
     this.newUser.age = age;
+  }
+
+  addGeneratedDocuments() {
+    this.newUser.documents = this.generator.generateDocuments();
+  }
+
+  addToggleDocument(newDocument) {
+    const documentsArray = this.newUser.documents.filter(document => document !== newDocument);
+
+    if (documentsArray.length === this.newUser.documents.length) documentsArray.push(newDocument);
+
+    this.newUser.documents = documentsArray;
   }
 
   addDocuments(documents) {
     this.newUser.documents = documents;
+  }
+
+  addGeneratedEnglishLevel() {
+    this.newUser.englishLevel = this.generator.generateEnglishLevel();
   }
 
   addEnglishLevel(englishLevel) {

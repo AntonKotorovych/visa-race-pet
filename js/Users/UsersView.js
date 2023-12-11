@@ -9,6 +9,9 @@ export default class UsersView {
     this.balanceGenerateButton = document.getElementById('generateBalance');
     this.ageGenerateButton = document.getElementById('generateAge');
     this.documentsGenerateButton = document.getElementById('generateDocuments');
+    this.documentPassport = document.getElementById('passport');
+    this.documentInsurance = document.getElementById('insurance');
+    this.documentPhoto = document.getElementById('photo');
     this.englishLevelGenerateButton = document.getElementById('generateEnglishLevel');
     this.generateAllButton = document.getElementById('generateAll');
     this.clearAllButton = document.getElementById('clearAll');
@@ -22,55 +25,71 @@ export default class UsersView {
     this.englishLevelInput = document.getElementById('englishLevel');
   }
 
-  bindFullNameInput(handler) {
+  bindGeneratedFullName(handler) {
     this.fullNameGenerateButton.addEventListener('click', () => {
-      const fullName = this.generator.generateFullName();
-      this.renderFullName(fullName);
-      handler(fullName);
+      handler();
     });
+  }
 
+  bindFullNameInput(handler) {
     this.fullNameInput.addEventListener('input', () => {
       handler(this.fullNameInput.value);
     });
   }
 
-  bindBalanceInput(handler) {
+  bindGeneratedBalance(handler) {
     this.balanceGenerateButton.addEventListener('click', () => {
-      const balance = this.generator.generateBalance();
-      this.renderBalance(balance);
-      handler(balance);
+      handler();
     });
+  }
 
+  bindBalanceInput(handler) {
     this.balanceInput.addEventListener('input', () => {
       handler(this.balanceInput.value);
     });
   }
 
-  bindAgeInput(handler) {
+  bindGeneratedAge(handler) {
     this.ageGenerateButton.addEventListener('click', () => {
-      const age = this.generator.generateAge();
-      this.renderAgeInput(age);
-      handler(age);
+      handler();
     });
+  }
 
+  bindAgeInput(handler) {
     this.ageInput.addEventListener('input', () => {
-      handler(this.ageInput.value);
+      handler(this.balanceInput.value);
     });
   }
 
-  bindDocumentsInput(handler) {
+  bindGeneratedDocuments(handler) {
     this.documentsGenerateButton.addEventListener('click', () => {
-      const documents = this.generator.generateDocuments();
-      this.renderDocumentsInput(documents);
-      handler(documents);
+      handler();
     });
   }
 
-  bindEnglishLevelInput(handler) {
+  bindDocument(handler) {
+    this.documentPassport.addEventListener('click', () => {
+      handler(this.documentPassport.id);
+    });
+
+    this.documentInsurance.addEventListener('click', () => {
+      handler(this.documentInsurance.id);
+    });
+
+    this.documentPhoto.addEventListener('click', () => {
+      handler(this.documentPhoto.id);
+    });
+  }
+
+  bindGeneratedEnglishLevel(handler) {
     this.englishLevelGenerateButton.addEventListener('click', () => {
-      const englishLevel = this.generator.generateEnglishLevel();
-      this.renderEnglishLevelInput(englishLevel);
-      handler(englishLevel);
+      handler();
+    });
+  }
+
+  bindEnglishLevel(handler) {
+    this.englishLevelInput.addEventListener('click', () => {
+      handler(this.englishLevelInput.value);
     });
   }
 
@@ -109,22 +128,20 @@ export default class UsersView {
     this.balanceInput.value = value;
   }
 
-  renderAgeInput(value) {
+  renderAge(value) {
     this.ageInput.value = value;
   }
 
-  renderDocumentsInput(value) {
+  renderDocuments(value) {
     const checkboxArray = this.documentsInput.children;
 
     for (let i = 0; i < checkboxArray.length; i++) {
       const checkboxId = checkboxArray[i].querySelector('input[type="checkbox"]').id;
-      if (checkboxId === value[i]) {
-        checkboxArray[i].querySelector('input[type="checkbox"]').checked = true;
-      }
+      checkboxArray[i].querySelector('input[type="checkbox"]').checked = checkboxId === value[i];
     }
   }
 
-  renderEnglishLevelInput(value) {
+  renderEnglishLevel(value) {
     for (const option of this.englishLevelInput.options) {
       if (option.value === value) {
         option.selected = true;
