@@ -49,10 +49,6 @@ export default class UsersModel {
     this.newUser.documents = documentsArray;
   }
 
-  addDocuments(documents) {
-    this.newUser.documents = documents;
-  }
-
   addGeneratedEnglishLevel() {
     this.newUser.englishLevel = this.generator.generateEnglishLevel();
   }
@@ -85,17 +81,28 @@ export default class UsersModel {
 
       this.users.push(newUser);
     }
+    alert('Maximum participants have been added, happy racing!');
   }
 
   clearAllUsers() {
     this.users = [];
+    alert('All participants have been removed');
   }
 
-  addParticipant(documents) {
-    if (this.users.length === 5) return;
-    this.newUser.documents = documents;
+  addParticipant() {
+    if (this.users.length === 5) {
+      alert('You cannot add more than five participants');
+      return;
+    }
+
     this.users.push(this.newUser);
-    this.newUser = {};
+    this.newUser = {
+      fullName: '',
+      balance: '',
+      age: '',
+      documents: [],
+      englishLevel: '',
+    };
   }
 
   getUsers() {

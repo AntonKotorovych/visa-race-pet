@@ -107,15 +107,8 @@ export default class UsersView {
 
   bindAddParticipant(handler) {
     this.addParticipantButton.addEventListener('click', () => {
-      const documentsArray = this.documentsInput.children;
-      let documents = [];
-      for (let i = 0; i < documentsArray.length; i++) {
-        const checkbox = documentsArray[i].querySelector('input[type="checkbox"]');
-        if (checkbox.checked) documents.push(checkbox.id);
-      }
-
+      handler();
       this.resetAllInputs();
-      handler(documents);
       alert('Participant has been added successfully!');
     });
   }
