@@ -1,9 +1,5 @@
-import Generator from '../Generator/Generator';
-
 export default class UsersView {
   constructor() {
-    this.generator = new Generator();
-
     // All Buttons
     this.fullNameGenerateButton = document.getElementById('generateFullName');
     this.balanceGenerateButton = document.getElementById('generateBalance');
