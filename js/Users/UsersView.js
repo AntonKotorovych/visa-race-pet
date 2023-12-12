@@ -111,12 +111,6 @@ export default class UsersView {
     });
   }
 
-  bindUpdateParticipantsCounter(handler) {
-    this.addParticipantButton.addEventListener('click', () => {
-      handler();
-    });
-  }
-
   renderFullName(value) {
     this.fullNameInput.value = value;
   }

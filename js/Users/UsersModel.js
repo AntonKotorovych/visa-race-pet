@@ -62,12 +62,13 @@ export default class UsersModel {
   }
 
   addAllUsers() {
+    console.log(this);
     for (let i = 0; i < 5; i++) {
       if (this.users.length === 5) return;
 
       let generatedFullName = this.generator.generateFullName();
 
-      while (!this.getIsFullNameUnique(this.getUsers(), generatedFullName)) {
+      while (!this.getIsFullNameUnique(this.users, generatedFullName)) {
         generatedFullName = this.generator.generateFullName();
       }
 
@@ -105,11 +106,7 @@ export default class UsersModel {
     };
   }
 
-  countParticipants() {
+  get participantCount() {
     return `${this.users.length} / 5 participants added`;
-  }
-
-  getUsers() {
-    return this.users;
   }
 }
