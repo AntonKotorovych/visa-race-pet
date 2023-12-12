@@ -62,7 +62,6 @@ export default class UsersModel {
   }
 
   addAllUsers() {
-    console.log(this);
     for (let i = 0; i < 5; i++) {
       if (this.users.length === 5) return;
 
