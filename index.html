@@ -21,26 +21,26 @@
           <label for="fullName">Full Name</label>
           <input id="fullName" type="text" placeholder="Enter full name..." />
           <div class="form-button">
-            <button>Generate</button>
+            <button type="button" id="generateFullName">Generate</button>
           </div>
         </div>
         <div class="main-form__input">
           <label for="balance">Balance</label>
           <input id="balance" type="number" placeholder="Enter balance..." />
           <div class="form-button">
-            <button>Generate</button>
+            <button type="button" id="generateBalance">Generate</button>
           </div>
         </div>
         <div class="main-form__input">
           <label for="age">Age</label>
           <input id="age" type="number" placeholder="Enter age..." />
           <div class="form-button">
-            <button>Generate</button>
+            <button type="button" id="generateAge">Generate</button>
           </div>
         </div>
         <div class="main-form__input">
           <label>Documents</label>
-          <div class="main-form-checkboxes">
+          <div class="main-form-checkboxes" id="documents">
             <div>
               <label for="passport">Passport</label>
               <input type="checkbox" id="passport" />
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="form-button">
-            <button>Generate</button>
+            <button type="button" id="generateDocuments">Generate</button>
           </div>
         </div>
         <div class="main-form__input">
@@ -70,33 +70,34 @@
             <option value="C2">C2</option>
           </select>
           <div class="form-button">
-            <button>Generate</button>
+            <button type="button" id="generateEnglishLevel">Generate</button>
           </div>
         </div>
         <div class="buttons-container">
           <div class="main-form__buttons">
             <div>
-              <button>Generate all</button>
+              <button type="button" id="generateAll">Generate all</button>
             </div>
             <div>
-              <button>Add participant</button>
+              <button type="button" id="addNewUser">Add participant</button>
             </div>
           </div>
           <div class="main-form__buttons">
             <div>
-              <button>Init</button>
+              <button type="button">Init</button>
             </div>
             <div>
-              <button>Clear</button>
+              <button type="button" id="clearAll">Clear</button>
             </div>
           </div>
           <div class="main-form__buttons main-form__buttons--race">
             <div>
-              <button>Race</button>
+              <button type="button">Race</button>
             </div>
           </div>
         </div>
       </form>
+      <span class="participants-counter" id="participantsCounter">0 / 5 participants added</span>
     </section>
     <script type="module" src="/js/main.js"></script>
   </body>
