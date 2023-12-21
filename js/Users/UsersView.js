@@ -12,6 +12,9 @@ export default class UsersView {
     this.generateAllButton = document.getElementById('generateAll');
     this.clearAllButton = document.getElementById('clearAll');
     this.addParticipantButton = document.getElementById('addNewUser');
+    this.initRaceButton = document.getElementById('initRace');
+    this.startRaceButton = document.getElementById('startRace');
+    this.raceDisplay = document.getElementById('raceDisplay');
 
     // All input fields
     this.fullNameInput = document.getElementById('fullName');
@@ -156,5 +159,19 @@ export default class UsersView {
     }
 
     this.englishLevelInput.children[0].selected = true;
+  }
+
+  bindInitRace(handler) {
+    this.initRaceButton.addEventListener('click', () => {
+      handler();
+      this.raceDisplay.classList.remove('hidden');
+      this.raceDisplay.scrollIntoView({
+        behavior: 'smooth',
+      });
+    });
+  }
+
+  bindStartRace() {
+    this.startRaceButton.addEventListener('click', () => {});
   }
 }

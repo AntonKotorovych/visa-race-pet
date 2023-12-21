@@ -84,7 +84,7 @@
           </div>
           <div class="main-form__buttons">
             <div>
-              <button type="button">Init</button>
+              <button type="button" id="initRace">Init</button>
             </div>
             <div>
               <button type="button" id="clearAll">Clear</button>
@@ -92,12 +92,15 @@
           </div>
           <div class="main-form__buttons main-form__buttons--race">
             <div>
-              <button type="button">Race</button>
+              <button type="button" id="startRace">Race</button>
             </div>
           </div>
         </div>
       </form>
       <span class="participants-counter" id="participantsCounter">0 / 5 participants added</span>
+    </section>
+    <section class="race-display" id="raceDisplay">
+      <canvas id="raceCanvas"></canvas>
     </section>
     <script type="module" src="/js/main.js"></script>
   </body>

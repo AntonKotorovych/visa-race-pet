@@ -1,12 +1,17 @@
 import Generator from '../Generator/Generator';
 import UsersModel from './UsersModel';
 import UsersView from './UsersView';
+import RaceModel from '../Race/RaceModel';
+import RaceView from '../Race/RaceView';
 
 export default class UsersController {
   constructor() {
     this.usersModel = new UsersModel();
     this.generator = new Generator();
     this.usersView = new UsersView();
+
+    this.raceModel = new RaceModel();
+    this.raceView = new RaceView();
 
     this.usersView.bindGeneratedFullName(this.handleGeneratedFullName);
     this.usersView.bindFullNameInput(this.handleFullNameInput);
@@ -26,6 +31,11 @@ export default class UsersController {
     this.usersView.bindAddAllUsers(this.handleAddAllUsers);
     this.usersView.bindClearAllUsers(this.handleClearAllUsers);
     this.usersView.bindAddParticipant(this.handleAddParticipant);
+
+    // Race
+
+    this.usersView.bindInitRace(this.handleInitRace);
+    this.raceView.bindResizeInnerWidth(this.handlerResizeWindowWidth);
   }
 
   handleGeneratedFullName = () => {
@@ -81,10 +91,27 @@ export default class UsersController {
   handleClearAllUsers = () => {
     this.usersModel.clearAllUsers();
     this.usersView.renderParticipantsCounter(this.usersModel.participantCount);
+    this.raceModel.users = [];
+    this.raceView.circle.clearAllCircles();
   };
 
   handleAddParticipant = () => {
     this.usersModel.addParticipant();
     this.usersView.renderParticipantsCounter(this.usersModel.participantCount);
+  };
+
+  // Race
+
+  handleInitRace = () => {
+    this.raceModel.addUsers(this.usersModel.users);
+    this.raceView.circle.updateCanvasSize();
+    this.raceView.circle.drawUsernamesCircles(this.raceModel.usernames);
+  };
+
+  handlerResizeWindowWidth = () => {
+    if (this.raceModel.users.length > 0) {
+      this.raceView.circle.updateCanvasSize();
+      this.raceView.circle.drawUsernamesCircles(this.raceModel.usernames);
+    }
   };
 }
