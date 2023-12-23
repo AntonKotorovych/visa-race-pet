@@ -171,7 +171,9 @@ export default class UsersView {
     });
   }
 
-  bindStartRace() {
-    this.startRaceButton.addEventListener('click', () => {});
+  bindStartRace(handler) {
+    this.startRaceButton.addEventListener('click', () => {
+      handler();
+    });
   }
 }

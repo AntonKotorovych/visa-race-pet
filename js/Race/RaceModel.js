@@ -19,4 +19,10 @@ export default class RaceModel {
     this.users.forEach(user => usernames.push(user.username));
     return usernames;
   }
+
+  get balances() {
+    const balances = [];
+    this.users.forEach(user => balances.push(user.circles[0]));
+    return balances;
+  }
 }

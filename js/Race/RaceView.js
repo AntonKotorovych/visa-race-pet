@@ -1,12 +1,17 @@
-import Circle from './Circle';
+import Circles from './Circles';
 
 export default class RaceView {
   constructor() {
-    this.circle = new Circle();
+    this.circles = new Circles();
   }
+
   bindResizeInnerWidth(handler) {
     window.addEventListener('resize', () => {
       handler();
     });
+  }
+
+  initiateBalanceRendering(balances) {
+    this.circles.drawBalanceCircles(balances);
   }
 }
