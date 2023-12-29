@@ -35,7 +35,5 @@ export default class RaceView {
       requestAnimationFrame(renderRace);
     };
     renderRace();
-
-    const winner = await model.startRace();
   }
 }

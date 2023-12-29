@@ -119,6 +119,9 @@ export default class UsersController {
   handlerStartRace = async () => {
     if (this.raceModel.users.length > 0) {
       this.raceView.renderRace(this.raceModel);
+
+      const winner = await this.raceModel.startRace();
+      console.log(winner);
     }
   };
 }
