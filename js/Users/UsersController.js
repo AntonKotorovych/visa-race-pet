@@ -93,7 +93,7 @@ export default class UsersController {
     this.usersModel.clearAllUsers();
     this.usersView.renderParticipantsCounter(this.usersModel.participantCount);
     this.raceModel.users = [];
-    this.raceView.circles.clearAllCircles();
+    this.raceView.clearAllCircles();
   };
 
   handleAddParticipant = () => {
@@ -105,20 +105,26 @@ export default class UsersController {
 
   handleInitRace = () => {
     this.raceModel.addUsers(this.usersModel.users);
-    this.raceView.circles.updateCanvasSize();
-    this.raceView.circles.drawUsernamesCircles(this.raceModel.usernames);
+    this.raceView.updateCanvasSize();
+    this.raceView.renderCircles(this.raceModel.users);
   };
 
   handlerResizeWindowWidth = () => {
     if (this.raceModel.users.length > 0) {
-      this.raceView.circles.updateCanvasSize();
-      this.raceView.circles.drawUsernamesCircles(this.raceModel.usernames);
+      this.raceView.updateCanvasSize();
+      this.raceView.drawInitCircles(this.raceModel.users);
     }
   };
 
-  handlerStartRace = () => {
+  handlerStartRace = async () => {
     if (this.raceModel.users.length > 0) {
-      this.raceView.initiateBalanceRendering(this.raceModel.balances);
+      this.raceModel.startRace();
+
+      const renderRace = () => {
+        this.raceView.renderCircles(this.raceModel.users);
+        requestAnimationFrame(renderRace);
+      };
+      renderRace();
     }
   };
 }
