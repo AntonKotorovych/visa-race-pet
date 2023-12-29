@@ -40,23 +40,76 @@ export default class RaceModel {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
     let isValid = user.balance >= 2000;
-    console.log(user);
     return new Promise(resolve => {
       setTimeout(() => {
         if (isValid) {
           user.circles[1].color = 'green';
-          resolve(user.circles[1].color);
+          resolve(user);
         } else {
           user.circles[1].color = 'red';
-          resolve(user.circles[1].color);
+        }
+      }, timeoutDuration);
+    });
+  }
+
+  async checkAge(user) {
+    const timeoutDuration = this.generator.getRandomNumber(1000, 3000);
+
+    const isValid = user.age >= 18 || user.age <= 60;
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (isValid) {
+          resolve();
+        } else {
+          reject('age is too low');
+        }
+      }, timeoutDuration);
+    });
+  }
+
+  async checkDocuments(user) {
+    const timeoutDuration = this.generator.getRandomNumber(10000, 20000);
+
+    const isValid = user.documentsQuantity.length === 3;
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (isValid) {
+          resolve();
+        } else {
+          reject('documents quantity is not enough');
+        }
+      }, timeoutDuration);
+    });
+  }
+
+  async checkEnglishLevel(user) {
+    const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
+
+    const isValid = user.englishLevel === 'B!' || user.englishLevel === 'B2' || user.englishLevel === 'C1' || user.englishLevel === 'C2';
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (isValid) {
+          resolve();
+        } else {
+          reject('english level is not enough');
         }
       }, timeoutDuration);
     });
   }
 
   async validateUser(user) {
-    const result = await this.validateBalance(user);
-    console.log(user.circles);
+    await this.validateBalance(user);
+
+    try {
+      const all = await Promise.all([this.checkAge(user), this.checkDocuments(user), this.checkEnglishLevel(user)]);
+      console.log(all);
+
+      if (!this.winnerUser) this.winnerUser = user;
+
+      return user;
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async startRace() {

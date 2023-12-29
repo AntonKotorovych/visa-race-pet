@@ -28,4 +28,14 @@ export default class RaceView {
       user.circles.forEach(circle => circle.drawCircle(this.context));
     });
   }
+
+  async renderRace(model) {
+    const renderRace = () => {
+      this.renderCircles(model.users);
+      requestAnimationFrame(renderRace);
+    };
+    renderRace();
+
+    const winner = await model.startRace();
+  }
 }
