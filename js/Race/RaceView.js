@@ -14,6 +14,7 @@ export default class RaceView {
 
   clearAllCircles() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    cancelAnimationFrame(this.animationId);
   }
 
   bindResizeInnerWidth(handler) {
@@ -32,8 +33,12 @@ export default class RaceView {
   renderRace(users) {
     const renderRaceAnimation = () => {
       this.renderCircles(users);
-      requestAnimationFrame(renderRaceAnimation);
+      this.animationId = requestAnimationFrame(renderRaceAnimation);
     };
     renderRaceAnimation();
+
+    setTimeout(() => {
+      cancelAnimationFrame(this.animationId);
+    }, 30000);
   }
 }
