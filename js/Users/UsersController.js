@@ -121,7 +121,7 @@ export default class UsersController {
       this.raceView.renderRace(this.raceModel);
 
       const winner = await this.raceModel.startRace();
-      console.log(winner);
+      // console.log(winner);
     }
   };
 }

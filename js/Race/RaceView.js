@@ -29,7 +29,7 @@ export default class RaceView {
     });
   }
 
-  async renderRace(model) {
+  renderRace(model) {
     const renderRace = () => {
       this.renderCircles(model.users);
       requestAnimationFrame(renderRace);

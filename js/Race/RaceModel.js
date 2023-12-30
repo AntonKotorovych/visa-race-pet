@@ -23,50 +23,50 @@ export default class RaceModel {
     });
   }
 
-  addBalanceCircles() {
-    this.users.forEach((user, index) => {
+  addBalanceCircle(user) {
+    user.circles.push(
+      new Circle({
+        text: `Balance ${user.balance}`,
+        x: user.circles[0].x + 280,
+        y: user.circles[0].y,
+        color: 'yellow',
+      })
+    );
+  }
+
+  addThirdPhaseCircles(user) {
+    const thirdPhaseCirclesData = [
+      { text: 'Age', relativePosition: -50 },
+      { text: 'Documents', relativePosition: 0 },
+      { text: 'EnglishLevel', relativePosition: 50 },
+    ];
+
+    thirdPhaseCirclesData.forEach(item => {
       user.circles.push(
         new Circle({
-          text: `Balance ${user.balance}`,
-          x: user.circles[0].x + 280,
-          y: 110 + index * 150,
+          text: item.text,
+          x: user.circles[1].x + 280,
+          y: user.circles[1].y + item.relativePosition,
+          radius: 25,
           color: 'yellow',
         })
       );
     });
   }
 
-  addThirdPhaseCircles(user) {
-    let previousY = user.circles[1].y - 50;
-    let age = 'Age';
-    let documents = 'Documents';
-    let englishLevel = 'English Level';
-    const text = [age, documents, englishLevel];
-    for (let i = 0; i < 3; i++) {
-      user.circles.push(
-        new Circle({
-          text: text[i],
-          x: user.circles[1].x + 280,
-          y: previousY,
-          radius: 25,
-          color: 'yellow',
-        })
-      );
-      previousY += 50;
-    }
-  }
-
   validateBalance(user) {
+    this.addBalanceCircle(user);
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
     let isValid = user.balance >= 2000;
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isValid) {
           user.circles[1].color = 'green';
           resolve(user);
         } else {
           user.circles[1].color = 'red';
+          reject(`User ${user.fullName} balance is not valid`);
         }
       }, timeoutDuration);
     });
@@ -83,7 +83,7 @@ export default class RaceModel {
           resolve();
         } else {
           user.circles[2].color = 'red';
-          reject('age is too low');
+          reject(`${user.fullName}'s age is too low`);
         }
       }, timeoutDuration);
     });
@@ -100,7 +100,7 @@ export default class RaceModel {
           resolve();
         } else {
           user.circles[3].color = 'red';
-          reject('documents quantity is not enough');
+          reject(`${user.fullName}'s documents quantity is not enough`);
         }
       }, timeoutDuration);
     });
@@ -109,7 +109,7 @@ export default class RaceModel {
   checkEnglishLevel(user) {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
-    const isValid = user.englishLevel === 'B1' || user.englishLevel === 'B2' || user.englishLevel === 'C1' || user.englishLevel === 'C2';
+    const isValid = this.generator.englishLevels.includes(user.englishLevel, 2);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isValid) {
@@ -117,16 +117,15 @@ export default class RaceModel {
           resolve();
         } else {
           user.circles[4].color = 'red';
-          reject('english level is not enough');
+          reject(`${user.fullName}'s english level is not enough`);
         }
       }, timeoutDuration);
     });
   }
 
   async validateUser(user) {
-    await this.validateBalance(user);
-
     try {
+      await this.validateBalance(user);
       this.addThirdPhaseCircles(user);
       await Promise.all([this.checkAge(user), this.checkDocuments(user), this.checkEnglishLevel(user)]);
 
@@ -142,7 +141,6 @@ export default class RaceModel {
   }
 
   async startRace() {
-    this.addBalanceCircles();
     this.winnerUser = undefined;
 
     return await Promise.race(
