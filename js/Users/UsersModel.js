@@ -75,7 +75,7 @@ export default class UsersModel {
         fullName: generatedFullName,
         balance: this.generator.generateBalance(),
         age: this.generator.generateAge(),
-        documentsQuantity: this.generator.generateDocuments(),
+        documents: this.generator.generateDocuments(),
         englishLevel: this.generator.generateEnglishLevel(),
       };
 

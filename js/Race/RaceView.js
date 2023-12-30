@@ -29,11 +29,11 @@ export default class RaceView {
     });
   }
 
-  renderRace(model) {
-    const renderRace = () => {
-      this.renderCircles(model.users);
-      requestAnimationFrame(renderRace);
+  renderRace(users) {
+    const renderRaceAnimation = () => {
+      this.renderCircles(users);
+      requestAnimationFrame(renderRaceAnimation);
     };
-    renderRace();
+    renderRaceAnimation();
   }
 }

@@ -36,9 +36,9 @@ export default class RaceModel {
 
   addThirdPhaseCircles(user) {
     const thirdPhaseCirclesData = [
-      { text: 'Age', relativePosition: -50 },
+      { text: 'Age', relativePosition: -40 },
       { text: 'Documents', relativePosition: 0 },
-      { text: 'EnglishLevel', relativePosition: 50 },
+      { text: 'EnglishLevel', relativePosition: 40 },
     ];
 
     thirdPhaseCirclesData.forEach(item => {
@@ -47,7 +47,7 @@ export default class RaceModel {
           text: item.text,
           x: user.circles[1].x + 280,
           y: user.circles[1].y + item.relativePosition,
-          radius: 25,
+          radius: 20,
           color: 'yellow',
         })
       );
@@ -91,8 +91,9 @@ export default class RaceModel {
 
   checkDocuments(user) {
     const timeoutDuration = this.generator.getRandomNumber(10000, 20000);
+    const validDocuments = this.generator.documents;
+    const isValid = validDocuments.every((document, index) => document === user.documents[index]);
 
-    const isValid = user.documentsQuantity.length === 3;
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isValid) {

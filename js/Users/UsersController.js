@@ -112,13 +112,12 @@ export default class UsersController {
   handlerResizeWindowWidth = () => {
     if (this.raceModel.users.length > 0) {
       this.raceView.updateCanvasSize();
-      this.raceView.drawInitCircles(this.raceModel.users);
     }
   };
 
   handlerStartRace = async () => {
     if (this.raceModel.users.length > 0) {
-      this.raceView.renderRace(this.raceModel);
+      this.raceView.renderRace(this.raceModel.users);
 
       const winner = await this.raceModel.startRace();
       // console.log(winner);
