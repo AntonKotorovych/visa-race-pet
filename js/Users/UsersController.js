@@ -105,13 +105,13 @@ export default class UsersController {
 
   handleInitRace = () => {
     this.raceModel.addUsers(this.usersModel.users);
-    this.raceView.updateCanvasSize();
+    this.raceView.updateCanvasSize(this.raceModel.users);
     this.raceView.renderCircles(this.raceModel.users);
   };
 
   handlerResizeWindowWidth = () => {
     if (this.raceModel.users.length > 0) {
-      this.raceView.updateCanvasSize();
+      this.raceView.updateCanvasSize(this.raceModel.users);
     }
   };
 

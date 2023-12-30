@@ -2,14 +2,20 @@ export default class RaceView {
   constructor() {
     this.canvas = document.getElementById('raceCanvas');
     this.context = this.canvas.getContext('2d');
+    this.isRacePhase = false;
   }
 
-  updateCanvasSize() {
+  updateCanvasSize(users) {
     const container = this.canvas.parentElement;
     this.canvas.width = container.clientWidth;
     this.canvas.height = container.clientHeight;
     this.yAxisStep = this.canvas.height / 5;
     this.clearAllCircles();
+    if (this.isRacePhase) {
+      this.renderRace(users);
+    } else {
+      this.renderCircles(users);
+    }
   }
 
   clearAllCircles() {
@@ -31,6 +37,7 @@ export default class RaceView {
   }
 
   renderRace(users) {
+    this.isRacePhase = true;
     const renderRaceAnimation = () => {
       this.renderCircles(users);
       this.animationId = requestAnimationFrame(renderRaceAnimation);
