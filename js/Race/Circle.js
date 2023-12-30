@@ -22,12 +22,4 @@ export default class Circle {
     context.stroke();
     context.closePath();
   }
-
-  updateStrokeStyle(style) {
-    this.strokeStyle = style;
-  }
-
-  updateEndAngle(newAngle) {
-    this.endAngle = newAngle;
-  }
 }

@@ -30,6 +30,7 @@ export default class RaceModel {
         x: user.circles[0].x + 280,
         y: user.circles[0].y,
         color: 'yellow',
+        endAngle: 0,
       })
     );
   }
@@ -57,6 +58,9 @@ export default class RaceModel {
   validateBalance(user) {
     this.addBalanceCircle(user);
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
+
+    const balanceEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
+    console.log(balanceEndAngleStep);
 
     let isValid = user.balance >= 2000;
     return new Promise((resolve, reject) => {
