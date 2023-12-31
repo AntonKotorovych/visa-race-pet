@@ -41,27 +41,6 @@ export default class RaceModel {
     );
   }
 
-  addThirdPhaseCircles(user) {
-    const thirdPhaseCirclesData = [
-      { text: 'Age', relativePosition: -40 },
-      { text: 'Documents', relativePosition: 0 },
-      { text: 'EnglishLevel', relativePosition: 40 },
-    ];
-
-    thirdPhaseCirclesData.forEach(item => {
-      user.circles.push(
-        new Circle({
-          text: item.text,
-          x: user.circles[1].x + 280,
-          y: user.circles[1].y + item.relativePosition,
-          radius: 20,
-          endAngle: 0,
-          color: 'yellow',
-        })
-      );
-    });
-  }
-
   validateBalance(user) {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
@@ -103,8 +82,9 @@ export default class RaceModel {
 
     this.addAgeCircle(user, ageEndAngleStep);
 
-    const isValid = user.age >= 18 || user.age <= 60;
-    console.log(isValid, user.age);
+    const isValid = user.age >= 18 && user.age <= 60 ? true : false;
+
+    console.log(isValid, user.age, user.fullName);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isValid) {
@@ -191,7 +171,6 @@ export default class RaceModel {
   async validateUser(user) {
     try {
       await this.validateBalance(user);
-      // this.addThirdPhaseCircles(user);
       await Promise.all([this.checkAge(user), this.checkDocuments(user), this.checkEnglishLevel(user)]);
 
       if (!Object.keys(this.winner).length) {
