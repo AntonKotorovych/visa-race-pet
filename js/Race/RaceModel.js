@@ -28,14 +28,15 @@ export default class RaceModel {
     });
   }
 
-  addBalanceCircle(user) {
+  addBalanceCircle(user, endAngleStep) {
     user.circles.push(
       new Circle({
         text: `Balance ${user.balance}`,
         x: user.circles[0].x + 280,
         y: user.circles[0].y,
         color: 'yellow',
-        // endAngle: 0,
+        endAngle: 0,
+        endAngleStep: endAngleStep,
       })
     );
   }
@@ -61,10 +62,10 @@ export default class RaceModel {
   }
 
   validateBalance(user) {
-    this.addBalanceCircle(user);
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
     const balanceEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
+    this.addBalanceCircle(user, balanceEndAngleStep);
 
     let isValid = user.balance >= 2000;
     return new Promise((resolve, reject) => {

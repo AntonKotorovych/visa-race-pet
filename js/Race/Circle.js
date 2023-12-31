@@ -1,5 +1,5 @@
 export default class Circle {
-  constructor({ text, x, y, radius = 65, startAngle = 0, endAngle = Math.PI * 2, color = 'white' }) {
+  constructor({ text, x, y, radius = 65, startAngle = 0, endAngle = Math.PI * 2, color = 'white', endAngleStep }) {
     this.text = text;
     this.x = x;
     this.y = y;
@@ -7,9 +7,14 @@ export default class Circle {
     this.startAngle = startAngle;
     this.endAngle = endAngle;
     this.color = color;
+    this.endAngleStep = endAngleStep;
   }
 
   drawCircle(context) {
+    if (this.endAngleStep && this.endAngle <= Math.PI * 2) {
+      this.endAngle += this.endAngleStep;
+    }
+
     context.beginPath();
     context.font = '16px Arial';
     context.fillStyle = 'white';

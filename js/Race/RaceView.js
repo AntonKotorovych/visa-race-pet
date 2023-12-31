@@ -39,7 +39,6 @@ export default class RaceView {
   }
 
   renderWinnerUser(user) {
-    console.log(user);
     if (user) this.winnerUsername.innerText = `${user.fullName} Wins!!! \n FATALITY!`;
   }
 
