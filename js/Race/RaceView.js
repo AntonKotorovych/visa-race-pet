@@ -3,6 +3,7 @@ export default class RaceView {
     this.canvas = document.getElementById('raceCanvas');
     this.context = this.canvas.getContext('2d');
     this.isRacePhase = false;
+    this.winnerUsername = document.getElementById('winnerUser');
   }
 
   updateCanvasSize(users) {
@@ -37,10 +38,16 @@ export default class RaceView {
     });
   }
 
-  renderRace(users) {
+  renderWinnerUser(user) {
+    console.log(user);
+    if (user) this.winnerUsername.innerText = `${user.fullName} Wins!!! \n FATALITY!`;
+  }
+
+  renderRace(users, winner) {
     this.isRacePhase = true;
     const renderRaceAnimation = () => {
       this.renderCircles(users);
+      this.renderWinnerUser(winner?.user);
       this.firstAnimationId = requestAnimationFrame(renderRaceAnimation);
     };
     this.secondAnimationId = requestAnimationFrame(renderRaceAnimation);

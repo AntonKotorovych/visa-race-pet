@@ -104,6 +104,7 @@ export default class UsersController {
   // Race
 
   handleInitRace = () => {
+    this.raceModel.resetWinner();
     this.raceModel.addUsers(this.usersModel.users);
     this.raceView.updateCanvasSize(this.raceModel.users);
     this.raceView.renderCircles(this.raceModel.users);
@@ -116,13 +117,10 @@ export default class UsersController {
   };
 
   handlerStartRace = async () => {
+    this.raceModel.resetWinner();
     if (this.raceModel.users.length > 0) {
-      console.log(this.usersModel.users);
-      console.log(this.raceModel.users);
-
-      this.raceView.renderRace(this.raceModel.users);
-      const winner = await this.raceModel.startRace();
-      console.log(winner);
+      this.raceView.renderRace(this.raceModel.users, this.raceModel.winner);
+      await this.raceModel.startRace();
     }
   };
 }

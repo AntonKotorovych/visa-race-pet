@@ -5,6 +5,11 @@ export default class RaceModel {
   constructor() {
     this.users = [];
     this.generator = new Generator();
+    this.winner = {};
+  }
+
+  resetWinner() {
+    if (this.winner.user) this.winner = {};
   }
 
   addUsers(users) {
@@ -60,7 +65,6 @@ export default class RaceModel {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
     const balanceEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
-    console.log(balanceEndAngleStep);
 
     let isValid = user.balance >= 2000;
     return new Promise((resolve, reject) => {
@@ -134,10 +138,9 @@ export default class RaceModel {
       this.addThirdPhaseCircles(user);
       await Promise.all([this.checkAge(user), this.checkDocuments(user), this.checkEnglishLevel(user)]);
 
-      if (!this.winnerUser) {
-        this.winnerUser = user;
+      if (!Object.keys(this.winner).length) {
+        this.winner.user = user;
       }
-      console.log(this.winnerUser);
 
       return user;
     } catch (error) {
@@ -147,8 +150,6 @@ export default class RaceModel {
   }
 
   async startRace() {
-    this.winnerUser = undefined;
-
     return await Promise.race(
       this.users.map(user => {
         return this.validateUser(user);
