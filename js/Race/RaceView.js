@@ -4,6 +4,7 @@ export default class RaceView {
     this.context = this.canvas.getContext('2d');
     this.isRacePhase = false;
     this.winnerUsername = document.getElementById('winnerUser');
+    this.maxRequestAnimationTime = 43000;
   }
 
   updateCanvasSize(users) {
@@ -54,6 +55,6 @@ export default class RaceView {
     setTimeout(() => {
       cancelAnimationFrame(this.firstAnimationId);
       cancelAnimationFrame(this.secondAnimationId);
-    }, 30000);
+    }, this.maxRequestAnimationTime + 1);
   }
 }

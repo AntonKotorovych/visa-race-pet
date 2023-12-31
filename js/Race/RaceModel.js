@@ -84,7 +84,6 @@ export default class RaceModel {
 
     const isValid = user.age >= 18 && user.age <= 60 ? true : false;
 
-    console.log(isValid, user.age, user.fullName);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isValid) {
