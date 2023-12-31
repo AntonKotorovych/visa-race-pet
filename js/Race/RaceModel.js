@@ -41,6 +41,20 @@ export default class RaceModel {
     );
   }
 
+  addThirdPhaseCircle(user, endAngleStep, text, relativePositionY) {
+    user.circles.push(
+      new Circle({
+        text,
+        x: user.circles[1].x + 280,
+        y: user.circles[1].y + relativePositionY,
+        radius: 20,
+        endAngle: 0,
+        endAngleStep,
+        color: 'yellow',
+      })
+    );
+  }
+
   validateBalance(user) {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
@@ -80,7 +94,7 @@ export default class RaceModel {
 
     const ageEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
 
-    this.addAgeCircle(user, ageEndAngleStep);
+    this.addThirdPhaseCircle(user, ageEndAngleStep, 'Age', -40);
 
     const isValid = user.age >= 18 && user.age <= 60 ? true : false;
 
@@ -115,7 +129,7 @@ export default class RaceModel {
     const timeoutDuration = this.generator.getRandomNumber(10000, 20000);
 
     const documentsEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
-    this.addDocumentsCircle(user, documentsEndAngleStep);
+    this.addThirdPhaseCircle(user, documentsEndAngleStep, 'Documents', 0);
 
     const validDocuments = this.generator.documents;
     const isValid = validDocuments.every(document => user.documents.includes(document));
@@ -151,7 +165,7 @@ export default class RaceModel {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
     const englishLevelEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
-    this.addEnglishLevelCircle(user, englishLevelEndAngleStep);
+    this.addThirdPhaseCircle(user, englishLevelEndAngleStep, 'English Level', 40);
 
     const isValid = this.generator.englishLevels.includes(user.englishLevel, 2);
     return new Promise((resolve, reject) => {
