@@ -36,7 +36,7 @@ export default class RaceModel {
         y: user.circles[0].y,
         color: 'yellow',
         endAngle: 0,
-        endAngleStep: endAngleStep,
+        endAngleStep,
       })
     );
   }
@@ -55,6 +55,7 @@ export default class RaceModel {
           x: user.circles[1].x + 280,
           y: user.circles[1].y + item.relativePosition,
           radius: 20,
+          endAngle: 0,
           color: 'yellow',
         })
       );
@@ -81,10 +82,29 @@ export default class RaceModel {
     });
   }
 
+  addAgeCircle(user, endAngleStep) {
+    user.circles.push(
+      new Circle({
+        text: 'Age',
+        x: user.circles[1].x + 280,
+        y: user.circles[1].y - 40,
+        radius: 20,
+        endAngle: 0,
+        endAngleStep,
+        color: 'yellow',
+      })
+    );
+  }
+
   checkAge(user) {
     const timeoutDuration = this.generator.getRandomNumber(1000, 3000);
 
+    const ageEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
+
+    this.addAgeCircle(user, ageEndAngleStep);
+
     const isValid = user.age >= 18 || user.age <= 60;
+    console.log(isValid, user.age);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (isValid) {
@@ -98,8 +118,26 @@ export default class RaceModel {
     });
   }
 
+  addDocumentsCircle(user, endAngleStep) {
+    user.circles.push(
+      new Circle({
+        text: 'Documents',
+        x: user.circles[1].x + 280,
+        y: user.circles[1].y,
+        radius: 20,
+        endAngle: 0,
+        endAngleStep,
+        color: 'yellow',
+      })
+    );
+  }
+
   checkDocuments(user) {
     const timeoutDuration = this.generator.getRandomNumber(10000, 20000);
+
+    const documentsEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
+    this.addDocumentsCircle(user, documentsEndAngleStep);
+
     const validDocuments = this.generator.documents;
     const isValid = validDocuments.every(document => user.documents.includes(document));
 
@@ -116,8 +154,25 @@ export default class RaceModel {
     });
   }
 
+  addEnglishLevelCircle(user, endAngleStep) {
+    user.circles.push(
+      new Circle({
+        text: 'English Level',
+        x: user.circles[1].x + 280,
+        y: user.circles[1].y + 40,
+        radius: 20,
+        endAngle: 0,
+        endAngleStep,
+        color: 'yellow',
+      })
+    );
+  }
+
   checkEnglishLevel(user) {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
+
+    const englishLevelEndAngleStep = this.generator.generateEndAngleCircleStep(timeoutDuration);
+    this.addEnglishLevelCircle(user, englishLevelEndAngleStep);
 
     const isValid = this.generator.englishLevels.includes(user.englishLevel, 2);
     return new Promise((resolve, reject) => {
@@ -136,7 +191,7 @@ export default class RaceModel {
   async validateUser(user) {
     try {
       await this.validateBalance(user);
-      this.addThirdPhaseCircles(user);
+      // this.addThirdPhaseCircles(user);
       await Promise.all([this.checkAge(user), this.checkDocuments(user), this.checkEnglishLevel(user)]);
 
       if (!Object.keys(this.winner).length) {
