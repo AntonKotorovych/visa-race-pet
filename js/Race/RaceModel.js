@@ -41,20 +41,6 @@ export default class RaceModel {
     );
   }
 
-  addThirdPhaseCircle(user, endAngleStep, text, relativePositionY) {
-    user.circles.push(
-      new Circle({
-        text,
-        x: user.circles[1].x + 280,
-        y: user.circles[1].y + relativePositionY,
-        radius: 20,
-        endAngle: 0,
-        endAngleStep,
-        color: 'yellow',
-      })
-    );
-  }
-
   validateBalance(user) {
     const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
 
@@ -75,12 +61,12 @@ export default class RaceModel {
     });
   }
 
-  addAgeCircle(user, endAngleStep) {
+  addThirdPhaseCircle(user, endAngleStep, text, relativePositionY) {
     user.circles.push(
       new Circle({
-        text: 'Age',
+        text,
         x: user.circles[1].x + 280,
-        y: user.circles[1].y - 40,
+        y: user.circles[1].y + relativePositionY,
         radius: 20,
         endAngle: 0,
         endAngleStep,
@@ -111,20 +97,6 @@ export default class RaceModel {
     });
   }
 
-  addDocumentsCircle(user, endAngleStep) {
-    user.circles.push(
-      new Circle({
-        text: 'Documents',
-        x: user.circles[1].x + 280,
-        y: user.circles[1].y,
-        radius: 20,
-        endAngle: 0,
-        endAngleStep,
-        color: 'yellow',
-      })
-    );
-  }
-
   checkDocuments(user) {
     const timeoutDuration = this.generator.getRandomNumber(10000, 20000);
 
@@ -145,20 +117,6 @@ export default class RaceModel {
         }
       }, timeoutDuration);
     });
-  }
-
-  addEnglishLevelCircle(user, endAngleStep) {
-    user.circles.push(
-      new Circle({
-        text: 'English Level',
-        x: user.circles[1].x + 280,
-        y: user.circles[1].y + 40,
-        radius: 20,
-        endAngle: 0,
-        endAngleStep,
-        color: 'yellow',
-      })
-    );
   }
 
   checkEnglishLevel(user) {
