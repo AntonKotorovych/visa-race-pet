@@ -59,7 +59,7 @@ export default class UsersView {
 
   bindAgeInput(handler) {
     this.ageInput.addEventListener('input', () => {
-      handler(this.balanceInput.value);
+      handler(this.ageInput.value);
     });
   }
 

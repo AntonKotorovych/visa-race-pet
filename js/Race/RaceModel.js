@@ -30,7 +30,7 @@ export default class RaceModel {
         x: user.circles[0].x + 280,
         y: user.circles[0].y,
         color: 'yellow',
-        endAngle: 0,
+        // endAngle: 0,
       })
     );
   }
@@ -96,7 +96,7 @@ export default class RaceModel {
   checkDocuments(user) {
     const timeoutDuration = this.generator.getRandomNumber(10000, 20000);
     const validDocuments = this.generator.documents;
-    const isValid = validDocuments.every((document, index) => document === user.documents[index]);
+    const isValid = validDocuments.every(document => user.documents.includes(document));
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -140,8 +140,9 @@ export default class RaceModel {
       console.log(this.winnerUser);
 
       return user;
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
+      return error;
     }
   }
 

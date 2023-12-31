@@ -20,7 +20,8 @@ export default class RaceView {
 
   clearAllCircles() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    cancelAnimationFrame(this.animationId);
+    cancelAnimationFrame(this.firstAnimationId);
+    cancelAnimationFrame(this.secondAnimationId);
   }
 
   bindResizeInnerWidth(handler) {
@@ -40,12 +41,13 @@ export default class RaceView {
     this.isRacePhase = true;
     const renderRaceAnimation = () => {
       this.renderCircles(users);
-      this.animationId = requestAnimationFrame(renderRaceAnimation);
+      this.firstAnimationId = requestAnimationFrame(renderRaceAnimation);
     };
-    renderRaceAnimation();
+    this.secondAnimationId = requestAnimationFrame(renderRaceAnimation);
 
     setTimeout(() => {
-      cancelAnimationFrame(this.animationId);
+      cancelAnimationFrame(this.firstAnimationId);
+      cancelAnimationFrame(this.secondAnimationId);
     }, 30000);
   }
 }

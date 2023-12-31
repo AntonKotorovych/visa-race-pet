@@ -94,7 +94,6 @@ export default class UsersModel {
       alert('You cannot add more than five participants');
       return;
     }
-
     this.users.push(this.newUser);
     this.newUser = {
       fullName: '',
