@@ -90,7 +90,7 @@ export default class UsersView {
   }
 
   bindEnglishLevel(handler) {
-    this.englishLevelInput.addEventListener('click', () => {
+    this.englishLevelInput.addEventListener('change', () => {
       handler(this.englishLevelInput.value);
     });
   }
