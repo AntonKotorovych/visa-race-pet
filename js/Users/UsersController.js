@@ -90,10 +90,10 @@ export default class UsersController {
   };
 
   handleClearAllUsers = () => {
+    this.raceView.clear();
     this.usersModel.clearAllUsers();
     this.usersView.renderParticipantsCounter(this.usersModel.participantCount);
     this.raceModel.users = [];
-    this.raceView.clearAllCircles();
   };
 
   handleAddParticipant = () => {

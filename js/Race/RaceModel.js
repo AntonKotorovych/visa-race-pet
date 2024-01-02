@@ -79,7 +79,7 @@ export default class RaceModel {
 
     this.addThirdPhaseCircle({ user, text: 'Age', relativePositionY: -40, duration });
 
-    const isValid = user.age >= 18 && user.age <= 60 ? true : false;
+    const isValid = user.age >= 18 && user.age <= 60;
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {

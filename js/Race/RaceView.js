@@ -5,6 +5,7 @@ export default class RaceView {
     this.isRacePhase = false;
     this.winnerUsername = document.getElementById('winnerUser');
     this.maxRequestAnimationTime = 43000;
+    this.clearAll = document.getElementById('clearAll');
   }
 
   updateCanvasSize(users) {
@@ -22,6 +23,10 @@ export default class RaceView {
 
   clearAllCircles() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  clear() {
+    this.clearAllCircles();
     cancelAnimationFrame(this.firstAnimationId);
     cancelAnimationFrame(this.secondAnimationId);
   }
