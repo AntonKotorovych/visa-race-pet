@@ -1,4 +1,4 @@
-import Circle from './Circle';
+import Circle from '../Circle/Circle';
 import Generator from '../Generator/Generator';
 
 export default class RaceModel {
@@ -60,7 +60,7 @@ export default class RaceModel {
     });
   }
 
-  addThirdPhaseCircle(user, text, relativePositionY, duration) {
+  addThirdPhaseCircle({ user, text, relativePositionY, duration }) {
     user.circles.push(
       new Circle({
         text,
@@ -75,9 +75,9 @@ export default class RaceModel {
   }
 
   checkAge(user) {
-    const timeoutDuration = this.generator.getRandomNumber(1000, 3000);
+    const duration = this.generator.getRandomNumber(1000, 3000);
 
-    this.addThirdPhaseCircle(user, 'Age', -40, timeoutDuration);
+    this.addThirdPhaseCircle({ user, text: 'Age', relativePositionY: -40, duration });
 
     const isValid = user.age >= 18 && user.age <= 60 ? true : false;
 
@@ -90,14 +90,14 @@ export default class RaceModel {
           user.circles[2].color = 'red';
           reject(`${user.fullName}'s age is too low`);
         }
-      }, timeoutDuration);
+      }, duration);
     });
   }
 
   checkDocuments(user) {
-    const timeoutDuration = this.generator.getRandomNumber(10000, 20000);
+    const duration = this.generator.getRandomNumber(10000, 20000);
 
-    this.addThirdPhaseCircle(user, 'Documents', 0, timeoutDuration);
+    this.addThirdPhaseCircle({ user, text: 'Documents', relativePositionY: 0, duration });
 
     const validDocuments = this.generator.documents;
     const isValid = validDocuments.every(document => user.documents.includes(document));
@@ -111,14 +111,14 @@ export default class RaceModel {
           user.circles[3].color = 'red';
           reject(`${user.fullName}'s documents quantity is not enough`);
         }
-      }, timeoutDuration);
+      }, duration);
     });
   }
 
   checkEnglishLevel(user) {
-    const timeoutDuration = this.generator.getRandomNumber(5000, 10000);
+    const duration = this.generator.getRandomNumber(5000, 10000);
 
-    this.addThirdPhaseCircle(user, 'English Level', 40, timeoutDuration);
+    this.addThirdPhaseCircle({ user, text: 'English Level', relativePositionY: 40, duration });
 
     const isValid = this.generator.englishLevels.includes(user.englishLevel, 2);
     return new Promise((resolve, reject) => {
@@ -130,7 +130,7 @@ export default class RaceModel {
           user.circles[4].color = 'red';
           reject(`${user.fullName}'s english level is not enough`);
         }
-      }, timeoutDuration);
+      }, duration);
     });
   }
 
