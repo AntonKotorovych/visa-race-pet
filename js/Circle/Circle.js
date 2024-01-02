@@ -1,3 +1,5 @@
+const FULL_CIRCLE_ANGLE = Math.PI * 2;
+
 export default class Circle {
   constructor({ text, x, y, radius = 65, startAngle = 0, endAngle = Math.PI * 2, color = 'white', duration }) {
     this.text = text;
@@ -8,6 +10,7 @@ export default class Circle {
     this.endAngle = endAngle;
     this.color = color;
     this.duration = duration;
+    this.previousTimeAnimation = null;
   }
 
   updateEndAngle(time) {
@@ -16,8 +19,8 @@ export default class Circle {
         this.previousTimeAnimation = time;
         return;
       }
-      if (this.endAngle <= Math.PI * 2) {
-        this.endAngle += (Math.PI * 2) / (this.duration / (time - this.previousTimeAnimation));
+      if (this.endAngle <= FULL_CIRCLE_ANGLE) {
+        this.endAngle += FULL_CIRCLE_ANGLE / (this.duration / (time - this.previousTimeAnimation));
       }
 
       this.previousTimeAnimation = time;

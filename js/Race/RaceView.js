@@ -25,8 +25,13 @@ export default class RaceView {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
+  clearWinner() {
+    this.winnerUsername.innerText = '';
+  }
+
   clear() {
     this.clearAllCircles();
+    this.clearWinner();
     cancelAnimationFrame(this.firstAnimationId);
     cancelAnimationFrame(this.secondAnimationId);
   }
