@@ -12,6 +12,9 @@ export default class UsersView {
     this.generateAllButton = document.getElementById('generateAll');
     this.clearAllButton = document.getElementById('clearAll');
     this.addParticipantButton = document.getElementById('addNewUser');
+    this.initRaceButton = document.getElementById('initRace');
+    this.startRaceButton = document.getElementById('startRace');
+    this.raceDisplay = document.getElementById('raceDisplay');
 
     // All input fields
     this.fullNameInput = document.getElementById('fullName');
@@ -56,7 +59,7 @@ export default class UsersView {
 
   bindAgeInput(handler) {
     this.ageInput.addEventListener('input', () => {
-      handler(this.balanceInput.value);
+      handler(this.ageInput.value);
     });
   }
 
@@ -87,7 +90,7 @@ export default class UsersView {
   }
 
   bindEnglishLevel(handler) {
-    this.englishLevelInput.addEventListener('click', () => {
+    this.englishLevelInput.addEventListener('change', () => {
       handler(this.englishLevelInput.value);
     });
   }
@@ -156,5 +159,21 @@ export default class UsersView {
     }
 
     this.englishLevelInput.children[0].selected = true;
+  }
+
+  bindInitRace(handler) {
+    this.initRaceButton.addEventListener('click', () => {
+      handler();
+      this.raceDisplay.classList.remove('hidden');
+      this.raceDisplay.scrollIntoView({
+        behavior: 'smooth',
+      });
+    });
+  }
+
+  bindStartRace(handler) {
+    this.startRaceButton.addEventListener('click', () => {
+      handler();
+    });
   }
 }

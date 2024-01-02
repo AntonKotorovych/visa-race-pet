@@ -75,7 +75,7 @@ export default class UsersModel {
         fullName: generatedFullName,
         balance: this.generator.generateBalance(),
         age: this.generator.generateAge(),
-        documentsQuantity: this.generator.generateDocuments(),
+        documents: this.generator.generateDocuments(),
         englishLevel: this.generator.generateEnglishLevel(),
       };
 
@@ -94,7 +94,6 @@ export default class UsersModel {
       alert('You cannot add more than five participants');
       return;
     }
-
     this.users.push(this.newUser);
     this.newUser = {
       fullName: '',

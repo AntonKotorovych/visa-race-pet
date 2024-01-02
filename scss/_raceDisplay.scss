@@ -1,0 +1,12 @@
+.race-display {
+  height: 830px;
+  margin: auto;
+  width: 80%;
+  border: 2px white solid;
+  position: relative;
+
+  & canvas {
+    width: 100%;
+    height: 100%;
+  }
+}

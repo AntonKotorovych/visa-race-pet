@@ -1,0 +1,11 @@
+.winner-user {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  right: 1vw;
+  &__username {
+    display: inline-block;
+    text-align: center;
+    font-size: $font-size-middle + 0.3;
+  }
+}
