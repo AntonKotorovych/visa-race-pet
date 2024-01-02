@@ -72,10 +72,4 @@ export default class Generator {
 
     return notValidEnglishLevels[this.getRandomNumber(0, notValidEnglishLevels.length - 1)];
   }
-
-  generateEndAngleCircleStep(timeoutDuration) {
-    const oneAnimateOperationSpeed = 16.7;
-    const totalNumberOfOperations = timeoutDuration / oneAnimateOperationSpeed;
-    return (Math.PI * 2) / totalNumberOfOperations;
-  }
 }

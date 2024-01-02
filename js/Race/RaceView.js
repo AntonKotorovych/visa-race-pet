@@ -32,10 +32,10 @@ export default class RaceView {
     });
   }
 
-  renderCircles(users) {
+  renderCircles(users, time) {
     this.clearAllCircles();
     users.forEach(user => {
-      user.circles.forEach(circle => circle.drawCircle(this.context));
+      user.circles.forEach(circle => circle.drawCircle(this.context, time));
     });
   }
 
@@ -45,8 +45,8 @@ export default class RaceView {
 
   renderRace(users, winner) {
     this.isRacePhase = true;
-    const renderRaceAnimation = () => {
-      this.renderCircles(users);
+    const renderRaceAnimation = time => {
+      this.renderCircles(users, time);
       this.renderWinnerUser(winner?.user);
       this.firstAnimationId = requestAnimationFrame(renderRaceAnimation);
     };
