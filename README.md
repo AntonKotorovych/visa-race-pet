@@ -14,7 +14,9 @@ Depending on their data, consulate decides whether to issue a visa to the partic
 ## Features
     
   ### Form Input
-    Users can manually enter their details, such as full name, balance, age, documents, and English level, or generate random values for these fields.
+    Users can manually enter their details, 
+    such as full name, balance, age, documents, and English level,
+    or generate random values for these fields.
   
   ### Generate All
     Participants can also be added to the race randomly.
@@ -38,7 +40,8 @@ Depending on their data, consulate decides whether to issue a visa to the partic
 
 ## Generation Logic and validation
 
-      The logic for generating random data for each participant is based on the chances of generating successful and unsuccessful results 
+      The logic for generating random data for each participant 
+      is based on the chances of generating successful and unsuccessful results 
       to advance to the next stage of the race
   
   ### Full name
