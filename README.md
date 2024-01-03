@@ -1,7 +1,7 @@
 # Visa Race
 
 Welcome to the Visa Race - a fun project in which participants compete to be the first to receive approval from the consul and receive a VISA!
-This project is a simple web application built with HTML, CSS/SCSS, and Native JavaScript.
+This project is a simple web application built with HTML, CSS/SCSS, and vanilla JavaScript.
 
 The project was built using object-oriented programming paradigm, 
 also my favorite MVC (Model, View, Controller) pattern,
