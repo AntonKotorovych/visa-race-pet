@@ -102,17 +102,15 @@ Depending on their data, consulate decides whether to issue a visa to the partic
 
   ## Getting Started
 
-    This project is posted on github pages. You can use it directly from there
+  This project is posted on github pages. You can use it directly from there
+  or
 
-    or
-
-    Clone the repository:
+### Clone the repository
 
     git clone https://github.com/AntonKotorovych/visa-race-pet.git
 
-    Open the index.html file in a web browser.
-
-    Interact with the form, add participants, and enjoy the race simulation!
+Open the index.html file in a web browser.
+Interact with the form, add participants, and enjoy the race simulation!
 
 Feel free to explore and modify the code to enhance or customize the project according to your preferences. Happy racing!
 
