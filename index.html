@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Oxanium:wght@200;400;700&family=Permanent+Marker&display=swap"
+      rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visa Race!</title>
+    <script type="module" crossorigin src="./assets/index-bsBd69-W.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-QFShCvSb.css">
+  </head>
+  <body>
+    <section>
+      <h1 class="title">Visa Race!</h1>
+    </section>
+    <section>
+      <form class="main-form">
+        <div class="main-form__input">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" type="text" placeholder="Enter full name..." />
+          <div class="form-button">
+            <button type="button" id="generateFullName">Generate</button>
+          </div>
+        </div>
+        <div class="main-form__input">
+          <label for="balance">Balance</label>
+          <input id="balance" type="number" placeholder="Enter balance..." />
+          <div class="form-button">
+            <button type="button" id="generateBalance">Generate</button>
+          </div>
+        </div>
+        <div class="main-form__input">
+          <label for="age">Age</label>
+          <input id="age" type="number" placeholder="Enter age..." />
+          <div class="form-button">
+            <button type="button" id="generateAge">Generate</button>
+          </div>
+        </div>
+        <div class="main-form__input">
+          <label>Documents</label>
+          <div class="main-form-checkboxes" id="documents">
+            <div>
+              <label for="passport">Passport</label>
+              <input type="checkbox" id="passport" />
+            </div>
+            <div>
+              <label for="insurance">Insurance</label>
+              <input type="checkbox" id="insurance" />
+            </div>
+            <div>
+              <label for="photo">Photo</label>
+              <input type="checkbox" id="photo" />
+            </div>
+          </div>
+          <div class="form-button">
+            <button type="button" id="generateDocuments">Generate</button>
+          </div>
+        </div>
+        <div class="main-form__input">
+          <label for="englishLevel">English level</label>
+          <select id="englishLevel">
+            <option selected>Select english level</option>
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+            <option value="B1">B1</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1</option>
+            <option value="C2">C2</option>
+          </select>
+          <div class="form-button">
+            <button type="button" id="generateEnglishLevel">Generate</button>
+          </div>
+        </div>
+        <div class="buttons-container">
+          <div class="main-form__buttons">
+            <div>
+              <button type="button" id="generateAll">Generate all</button>
+            </div>
+            <div>
+              <button type="button" id="addNewUser">Add participant</button>
+            </div>
+          </div>
+          <div class="main-form__buttons">
+            <div>
+              <button type="button" id="initRace">Init</button>
+            </div>
+            <div>
+              <button type="button" id="clearAll">Clear</button>
+            </div>
+          </div>
+          <div class="main-form__buttons main-form__buttons--race">
+            <div>
+              <button type="button" id="startRace">Race</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <span class="participants-counter" id="participantsCounter">0 / 5 participants added</span>
+    </section>
+    <div class="winner-user">
+      <span class="winner-user__username" id="winnerUser"></span>
+    </div>
+    <section class="race-display" id="raceDisplay">
+      <canvas id="raceCanvas"></canvas>
+    </section>
+  </body>
+</html>
